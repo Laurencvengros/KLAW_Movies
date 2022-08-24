@@ -6,10 +6,11 @@ searchMovie= $("#searchmovies").val();
 $("#searchBtn").on("click", function(){
 console.log($("#searchmovies").val());
 searchMovie = $("#searchmovies").val();
+$("<h2>" + searchMovie + "<h2>").appendTo('#movie-title'); //not working ??
 //console.log(movie);
 clearMovie()
 getMovie();
-getPosters();
+
 
 });
 
@@ -73,7 +74,7 @@ var TitleHeader = $("<h6>");
 var TitleDiv = $("<div>");
 var TextDiv = $("<div>");
 var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-//var yearEl = $("<p>").text(yearVal);
+
 var summaryTab =$("<p>").text("Summary: ");
 var plotEl = $("<p>").text( plotVal);
 var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
@@ -85,33 +86,36 @@ var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rate
 
 TitleDiv.append(TitleHeader);
 cardDiv.append(TitleDiv);
-//TextDiv.append(titleEl );
+TextDiv.append(titleEl );
 //TextDiv.append(yearEl);
 //TextDiv.append(ratingEl);
 TextDiv.append(summaryTab);
 TextDiv.append(plotEl);
 card.append(cardDiv);
 cardDiv.append(TextDiv);
-$("#moive-title")
+
+//$("#moive-title").append(card); not working?? trying to get the title and yaer to display above the poster
 $("#movie-data").append(card);
 
-movieTitle=$("<h4>").text(titleEl)
-$("#moive-title").append(movieTitle);
+
+
 
 if(ratingVal > 8){
-TextDiv.prepend(highRating).before(titleEl);
+TextDiv.prepend(highRating);
 }else{
-    TextDiv.prepend(ratingEl).berfore(titleEl);
+    TextDiv.prepend(ratingEl);
 }
 })
-
+getPosters();
 };
 
 
 
 
 function clearMovie(){
-    $("#movie-output").empty();
+    $("#movie-title").empty();
+    $("#movie-poster").empty();
+    $("#movie-data").empty();
 }
 
 
