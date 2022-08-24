@@ -15,6 +15,9 @@ $("#searchBtn").on("click",function(event){
         response.json().then(function (data) {
             console.log(data);
             return data;
+
+
+            
         });
         
     });
