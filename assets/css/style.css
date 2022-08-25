@@ -1,0 +1,13 @@
+
+.columns{
+    text-align: center;
+}
+
+#title{
+    font-size: 40px;
+}
+
+#poster1, #poster2, #poster3{
+    height: 500px;
+}
+

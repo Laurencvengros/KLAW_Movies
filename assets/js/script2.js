@@ -1,42 +1,7 @@
-var omdbAPI = "31aa90e4";
-var imdbAPIkey = "k_lomgkwyt";
-var titleEl = document.getElementById("#movietitle");
-//searchMovie= $("#searchmovies").val();
-
-
-$("#searchBtn").on("click", function(){
-console.log($("#searchmovies").val());
-searchMovie = $("#searchmovies").val();
-$(".display-poster").css("display", "none")
-
-//console.log(movie);
-clearMovie()
-getMovie();
-getPosters();
-
-});
-$("#poster1").on("click", function(){
-    clearMovie()
-    searchMovie="spirited Away";
-    getMovie(searchMovie);
-});
-
-$("#poster2").on("click", function(){
-    clearMovie()
-    searchMovie="Independence Day";
-    getMovie(searchMovie);
-});
-
-$("#poster3").on("click", function(){
-    clearMovie()
-    searchMovie="Insidious";
-    getMovie(searchMovie);
-});
-
-$("#homeBtn").on("click", function(){
-    clearMovie()
-    $(".display-poster").css('display', "inline")
+displayMovies= ["Spirited Away", "End Game", "Sinister"]
+$(".display-poster").on("click", function(){
     
+    getMovie();
 });
 
 function getPosters(){
@@ -69,7 +34,7 @@ $("#movie-poster").append(card);
 
 
 function getMovie(){
-var movieTitle = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + searchMovie + "&plot=full&r=json" 
+var movieTitle = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + $(".display-poster") + "&plot=full&r=json" 
 
 
 fetch(movieTitle)
@@ -121,7 +86,7 @@ TextDiv.prepend(highRating);
     TextDiv.prepend(ratingEl);
 }
 })
-
+getPosters();
 };
 
 
