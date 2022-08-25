@@ -133,7 +133,6 @@ function clearMovie(){
     $("#movie-data").empty();
 }
 
-
     
 
 
