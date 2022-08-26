@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="Assets/Styles/styles.css">
     <title>WALK Movies</title>
 </head>
 <body>
 <section class="hero is-info is-halfheight-with-navbar block">
     <div class="hero-head">
         <nav class="navbar-card">
-            <div class="container">
+            <div class="container.hero">
                 <div class="navbar-brand is-size-4">
                     <span class="navbar-burger" data-target="navbarMenuHeroB">
                         <span></span>
@@ -29,6 +29,12 @@
                         <a class="navbar-item">
                             ABOUT
                         </a>
+                        <a class="navbar-item is-active">
+                            PERSONALIZE
+                        </a>
+                        <a class="navbar-item">
+                            TOP 10
+                        </a>
                         <span class="navbar-item">
                             <a class="button is-light is-large">
                                 <span class="icon">
@@ -36,34 +42,54 @@
                                 </span>
                             </a>
                         </span>
+                        
                     </div>
                 </div>
             </div>
         </nav>
     </div>
 </section>
-    <div class="hero-body">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-half is">
-                  <p class="title is-1">
-                    WALK MOVIES
-                  </p>
-                  <p class="subtitle is-5">
+    <div class="container">
+        <div class="columns is-vcentered mt-6">
+            <div class="column is-two-thirds">
+                <p class="title">
+                    KLAW MOVIES
+                </p>
+                <p class="subtitle is-5">
                     Start by searching for your favorite movie.
-                  </p>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <label class="label">Search for a movie...</label>
+                </p>
+            </div>
+            <div class="column">
+                <div class="field has-addons">
                     <div class="control">
                         <input type="text" class="input" placeholder="Movie Title">
                     </div>
-                  </div>
+                    <div class="control">
+                        <a class="button is-info" id="searchBtn">
+                            Search
+                        </a> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>   
+    <div class="container-poster">
+        <div class="notification $grey-light">
+            <div class="columns">
+                <div class="column"> 
+                    <div class="column poster">
+                    <img class = "display-poster" id="poster1" src="./Assets/images/spirited_away_poster.jpg" alt="spirited away poster">
+                    <img class = "display-poster" id="poster2" src="./Assets/images/independence_day_poster.jpg" alt="Independence Day poster">
+                    <img class = "display-poster" id="poster3" src="./Assets/images/insidious_poster.jpg" alt="Insideous poster">
+                    <h2 id="movie-title"></h2>
+                    <div id="movie-poster"></div>
+                    <div id="movie-data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="Assets/script.js"></script>
 </body>
 </html>
