@@ -1,21 +1,22 @@
 var movieDBAPI = "ae8cbfc11d012e219d3b44e276a96f51";
 //  console.log(movie);
-var pastMovies = [];
-var tableBody = document.getElementById("pastSearches")
+var pastMovies = { 
+  movies:[]
+};
+var tableBody = document.getElementById("pastSearches");
 
 $(document).ready(function() {
-  var getMovies = localStorage.getItem("pastMovies");
+  var getMovies = JSON.parse(localStorage.getItem("pastMovies"));
   if (getMovies !== null) {
-    pastMovies = getMovies;
-  }
+    pastMovies.movies = getMovies;
+  } 
   pastSearches();
 })
 
 $("#searchBtn").on("click",function(event){
     event.preventDefault();
     searchMovie = $("#searchmovies").val(); 
-    pastMovies = [];
-    pastMovies.push(searchMovie)    
+    pastMovies.movies.push(searchMovie);    
     console.log(searchMovie);
     
     var titleURL = "https://api.themoviedb.org/3/search/movie?api_key=" + movieDBAPI + "&language=en-US&page=1&include_adult=false&query=" + searchMovie;
@@ -30,29 +31,35 @@ $("#searchBtn").on("click",function(event){
         
     });
   storeSearches();
-  pastSearches();
+  // pastSearches();
+  var movieListEl = document.createElement("ul");
+  var movieLiEl = document.createElement("li");
+  movieLiEl.innerHTML = "<button type='button' class='movieBtn' attr='"+ pastMovies.movies[pastMovies.movies.length-1] +"'>" + pastMovies.movies[pastMovies.movies.length-1] + "</button>";
+  movieListEl.appendChild(movieLiEl);
+  tableBody.appendChild(movieListEl);
 });
 
-$("body").delegate("list-group-item", "click", function() {
+$("body").delegate("movieBtn", "click", function() {
   searchMovie = $(this).text();
+  console.log("clicked");
 })
 
 function storeSearches() {
-  localStorage.setItem("pastMovies", JSON.stringify(pastMovies));
+  localStorage.setItem("pastMovies", JSON.stringify(pastMovies.movies));
   console.log(localStorage);
 }
 
 function pastSearches() {
-  var savedSearches = JSON.parse(localStorage.getItem("pastMovies") || []);
+  // var savedSearches = JSON.parse(localStorage.getItem("pastMovies"));
   var movieListEl = document.createElement("ul");
   movieListEl.classList.add("list-unstyled");
-  movieListEl.classList.add("w-100")
+  movieListEl.classList.add("w-100");
 
-  for (var i = 0; i < savedSearches.length; i++) {
+  for (var i = 0; i < pastMovies.movies.length; i++) {
     var movieLiEl = document.createElement("li");
-    movieLiEl.innerHTML = "<button type='button' class='list-group-item list-group-item-action' attr='"+ pastMovies +"'>" + pastMovies[i] + "</button>";
-    console.log(movieLiEl)
-    movieListEl.appendChild(movieLiEl)
+    movieLiEl.innerHTML = "<button type='button' class='movieBtn' attr='"+ pastMovies.movies[i] +"'>" + pastMovies.movies[i] + "</button>";
+    // console.log(movieLiEl);
+    movieListEl.appendChild(movieLiEl);
   }
   tableBody.appendChild(movieListEl);
 };
