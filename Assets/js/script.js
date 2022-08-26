@@ -2,17 +2,67 @@ var omdbAPI = "31aa90e4";
 var imdbAPIkey = "k_lomgkwyt";
 var titleEl = document.getElementById("#movietitle");
 var searchMovie= $("#searchmovies");
+$("#homeSec").show();
+$("#aboutSec").hide();
+$("#personalizeSec").hide();
+$("#top20Sec").hide();
+$("#triviaSec").hide();
 
+
+$("#homeBtn").on("click", function(){
+    $("#homeSec").show();
+    $("#aboutSec").hide();
+    $("#personalizeSec").hide();
+    $("#top20Sec").hide();
+    $("#triviaSec").hide();
+
+});
+
+$("#aboutBtn").on("click", function(){
+    $("#homeSec").hide();
+    $("#aboutSec").show();
+    $("#personalizeSec").hide();
+    $("#top20Sec").hide();
+    $("#triviaSec").hide();
+
+});
+
+$("#personalizeBtn").on("click", function(){
+    $("#homeSec").hide();
+    $("#aboutSec").hide();
+    $("#personalizeSec").show();
+    $("#top20Sec").hide();
+    $("#triviaSec").hide();
+
+});
+
+$("#top20Btn").on("click", function(){
+    $("#homeSec").hide();
+    $("#aboutSec").hide();
+    $("#personalizeSec").hide();
+    $("#top20Sec").show();
+    $("#triviaSec").hide();
+
+});
+
+$("#triviaBtn").on("click", function(){
+    $("#homeSec").hide();
+    $("#aboutSec").hide();
+    $("#personalizeSec").hide();
+    $("#top20Sec").hide();
+    $("#triviaSec").show();
+
+});
 
 $("#searchBtn").on("click", function(){
-console.log($("#searchmovies").val());
-searchMovie = $("#searchmovies").val();
-$(".display-poster").css("display", "none")
+    console.log($("#searchmovies").val());
+    searchMovie = $("#searchmovies").val();
+    $(".display-poster").css("display", "none")
 
-//console.log(movie);
-clearMovie()
-getMovie();
-getPosters();
+    //console.log(movie);
+    clearMovie()
+    getMovie();
+    getPosters();
 
 });
 $("#poster1").on("click", function(){
