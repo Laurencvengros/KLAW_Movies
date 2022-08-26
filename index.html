@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Assets/Styles/styles.css">
-    <title>WALK Movies</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>KLAW Movies</title> 
 </head>
 <body>
 <section class="hero is-info is-halfheight-with-navbar block">
     <div class="hero-head">
         <nav class="navbar-card">
             <div class="container.hero">
-                <div class="navbar-brand is-size-4">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="./assets/images/KLAW_logo.png" width="112" height="28" alt="pawprint klaw movie logo">
+                    </a>
                     <span class="navbar-burger" data-target="navbarMenuHeroB">
                         <span></span>
                         <span></span>
@@ -23,17 +26,20 @@
                 </div>
                 <div id="navbarMenuHeroB" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item is-active">
+                        <a class="navbar-item">
                             HOME
                         </a>
                         <a class="navbar-item">
                             ABOUT
                         </a>
-                        <a class="navbar-item is-active">
+                        <a class="navbar-item">
                             PERSONALIZE
                         </a>
                         <a class="navbar-item">
                             TOP 10
+                        </a>
+                        <a class="navbar-item">
+                            TRIVIA
                         </a>
                         <span class="navbar-item">
                             <a class="button is-light is-large">
@@ -62,7 +68,10 @@
             <div class="column">
                 <div class="field has-addons">
                     <div class="control is-expanded">
-                        <input type="text" class="input" placeholder="Movie Title">
+                        <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
+                        <!-- Error Message Upon Empty Search -->
+                        <span id="errorMessage">   
+                        </span>
                     </div>
                     <div class="control">
                         <a class="button is-info" id="searchBtn">
@@ -78,9 +87,9 @@
             <div class="columns">
                 <div class="column"> 
                     <div class="column poster">
-                    <img class = "display-poster" id="poster1" src="./Assets/images/spirited_away_poster.jpg" alt="spirited away poster">
-                    <img class = "display-poster" id="poster2" src="./Assets/images/independence_day_poster.jpg" alt="Independence Day poster">
-                    <img class = "display-poster" id="poster3" src="./Assets/images/insidious_poster.jpg" alt="Insideous poster">
+                    <img class = "display-poster" id="poster1" src="./assets/images/spirited_away_poster.jpg" alt="spirited away poster">
+                    <img class = "display-poster" id="poster2" src="./assets/images/independence_day_poster.jpg" alt="Independence Day poster">
+                    <img class = "display-poster" id="poster3" src="./assets/images/insidious_poster.jpg" alt="Insideous poster">
                     <h2 id="movie-title"></h2>
                     <div id="movie-poster"></div>
                     <div id="movie-data"></div>
@@ -90,6 +99,6 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Assets/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

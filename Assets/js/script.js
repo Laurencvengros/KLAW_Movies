@@ -1,7 +1,7 @@
 var omdbAPI = "31aa90e4";
 var imdbAPIkey = "k_lomgkwyt";
 var titleEl = document.getElementById("#movietitle");
-//searchMovie= $("#searchmovies").val();
+var searchMovie= $("#searchmovies");
 
 
 $("#searchBtn").on("click", function(){
@@ -56,7 +56,7 @@ console.log(poster);
 
 var card = $("<div class='card'>")
 var TextDiv = $("<div>")
-imgEl=$("<img>").attr('src', poster).css('width', '156px');;
+imgEl=$("<img>").attr('src', poster).css('height', '500px');
 TextDiv.append(imgEl)
 card.append(TextDiv);
 $("#movie-poster").append(card);
@@ -70,6 +70,7 @@ $("#movie-poster").append(card);
 
 function getMovie(){
 var movieTitle = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + searchMovie + "&plot=full&r=json" 
+console.log(searchMovie);
 
 
 fetch(movieTitle)
