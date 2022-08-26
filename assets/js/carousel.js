@@ -1,5 +1,5 @@
 
-var imdbAPIkey = "k_lomgkwyt";
+var imdbAPIkey = "k_pauylhuk";
 var imdbInput = $("#imdbInput");
 
 // var imdbTitle = $("#imdbTitle");
@@ -25,7 +25,7 @@ $("#imdbBtn").on("click",function(event){
     fetch(imdbURL)
     .then(function(response){
         response.json().then(function (data) {
-            // console.log(data);
+            console.log(data);
             // console.log(data.results[0].title);
             // console.log(data.results[0].description);
 
