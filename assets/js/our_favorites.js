@@ -109,28 +109,28 @@ $("#drew3").on("click", function(){
 
 $("#drew4").on("click", function(){
     clearMovie();
-    searchMovie = "Animal House";
+    searchMovie = "The Shawsahnk Redemption";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#drew5").on("click", function(){
     clearMovie();
-    searchMovie = "Guardians of the Galaxy Volume II";
+    searchMovie = "Guardians of the Galaxy Vol. 2";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#will1").on("click", function(){
     clearMovie();
-    searchMovie = "Back to the Future II";
+    searchMovie = "Back to the Future Part II";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#will2").on("click", function(){
     clearMovie();
-    searchMovie = "Terminator II";
+    searchMovie = "Terminator 2";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
