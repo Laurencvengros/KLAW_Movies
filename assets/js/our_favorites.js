@@ -16,22 +16,144 @@ var titleEl = document.getElementById("#movietitle");
 
 // });
 
-$("#drew1").on("click", function(){
-    clearMovie()
-    searchMovie="Friday Night Lights";
+$("#kelsie1").on("click", function(){
+    clearMovie();
+    searchMovie = "Uptown Girls";
     getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#kelsie2").on("click", function(){
+    clearMovie();
+    searchMovie = "Ella Enchanted";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#kelsie3").on("click", function(){
+    clearMovie();
+    searchMovie = "New York Minute";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#kelsie4").on("click", function(){
+    clearMovie();
+    searchMovie = "The Lorax";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#kelsie5").on("click", function(){
+    clearMovie();
+    searchMovie = "The Social Network";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#lauren1").on("click", function(){
+    clearMovie();
+    searchMovie = "";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#lauren2").on("click", function(){
+    clearMovie();
+    searchMovie = "";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#lauren3").on("click", function(){
+    clearMovie();
+    searchMovie = "";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#lauren4").on("click", function(){
+    clearMovie();
+    searchMovie = "";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#lauren5").on("click", function(){
+    clearMovie();
+    searchMovie = "";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#drew1").on("click", function(){
+    clearMovie();
+    searchMovie = "Hitch";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
 });
 
 $("#drew2").on("click", function(){
-    clearMovie()
-    searchMovie="The Secret Life of Walter Mitty";
+    clearMovie();
+    searchMovie = "The Secret Life of Walter Mitty";
     getMovie(searchMovie);
+    getPosters(searchMovie);
 });
 
 $("#drew3").on("click", function(){
-    clearMovie()
-    searchMovie="The Green Mile";
+    clearMovie();
+    searchMovie = "The Green Mile";
     getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#drew4").on("click", function(){
+    clearMovie();
+    searchMovie = "Animal House";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#drew5").on("click", function(){
+    clearMovie();
+    searchMovie = "Guardians of the Galaxy Volume II";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#will1").on("click", function(){
+    clearMovie();
+    searchMovie = "Back to the Future II";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#will2").on("click", function(){
+    clearMovie();
+    searchMovie = "Terminator II";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#will3").on("click", function(){
+    clearMovie();
+    searchMovie = "Forest Gump";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#will4").on("click", function(){
+    clearMovie();
+    searchMovie = "Memento";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+});
+
+$("#will5").on("click", function(){
+    clearMovie();
+    searchMovie = "Black Panther";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
 });
 
 $("#homeBtn").on("click", function(){
