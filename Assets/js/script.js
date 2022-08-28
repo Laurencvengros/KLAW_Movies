@@ -6,22 +6,14 @@ var favMovies= {
 
     personalSaves:[]
 };
-console.log(favMovies.personalSaves);
-//favMovies.personalSaves.push(personalSave)
+
+var personal = {
+    movieTitle: "",
+    poster: "",
+};
 
 var savedPosters = JSON.parse(localStorage.getItem('favMovies'));
-console.log(savedPosters.personalSaves[0].movieTitle);
-
-
-for(var i = 0; i < savedPosters.personalSaves.length; i++){
-        //var ulEl = document.createElement("h2");
-    var liEl = document.createElement('li');
-    liEl.innerHTML = "<h2>"  + savedPosters.personalSaves[i].movieTitle + "</h2>";
-    $("#favorites").append(liEl);
-    
-    
-
-} 
+console.log(favMovies.personalSaves);
 
 function getPosters(){
     var posterAPI = "https://imdb-api.com/en/API/Search/" + imdbAPIkey + "/" + searchMovie;
@@ -46,30 +38,73 @@ function getPosters(){
 
             $("#movie-poster").append(card);
 
+            $("#favBtn").on("click", function(){
+   
+    
+
+                    personal.movieTitle=$("#searchmovies").val();
+                    personal.poster = data.results[0].image;
+                    console.log(personal.poster);
+                    console.log(personal);
+                    console.log(favMovies.personalSaves);
+                    favMovies.personalSaves.push(personal);
+                    localStorage.setItem("favMovies", JSON.stringify(favMovies));
+                    console.log(localStorage.getItem("favMovies"));
+                
+                    var liEl = document.createElement('li');
+                    liEl.innerHTML = "<h2>"  + personal.movieTitle + "</h2>";
+                    $("#favorites").append(liEl);
+
+                    var savedPosters = JSON.parse(localStorage.getItem('favMovies'));
+                    //console.log(savedPosters.personalSaves[0].movieTitle);
+                    c//onsole.log(savedPosters.personalSaves[0].poster);
+
+                    for(var i = 0; i < savedPosters.personalSaves.length; i++){
+                        var liEl = document.createElement('li');
+                        liEl.innerHTML = "<h2>"  + savedPosters.personalSaves[i].movieTitle + "</h2>";
+                        
+                        //var imgDiv = document.createElement('img');
+                        //imgDiv.innerHTML = "<img>" + savedPosters.personalSaves[i].poster + "<img>";
+                        
+                         
+                        
+                        
+
+                    } 
+                    $("#favorites").append(liEl);
+                    //$("#favorites").append(imgDiv);
+
+                
+                });
+                
+
 
         });
 };
 
-$("#favBtn").on("click", function(){
-    var personal = {
-        movieTitle: "",
-        poster: "",
-    };
+$(document).ready(function(){
+    if(savedPosters !== null){
+        personal=savedPosters
+    }
+})
+
+// $("#favBtn").on("click", function(){
+   
     
 
-    personal.movieTitle=$("#searchmovies").val();
-    console.log(personal);
-    console.log(favMovies.personalSaves);
-    favMovies.personalSaves.push(personal);
-    localStorage.setItem("favMovies", JSON.stringify(favMovies));
-    console.log(localStorage.getItem("favMovies"));
+//     personal.movieTitle=$("#searchmovies").val();
+//     console.log(personal);
+//     console.log(favMovies.personalSaves);
+//     favMovies.personalSaves.push(personal);
+//     localStorage.setItem("favMovies", JSON.stringify(favMovies));
+//     console.log(localStorage.getItem("favMovies"));
 
-    var liEl = document.createElement('li');
-    liEl.innerHTML = "<h2>"  + personal.movieTitle + "</h2>";
-    $("#favorites").append(liEl);
+//     var liEl = document.createElement('li');
+//     liEl.innerHTML = "<h2>"  + personal.movieTitle + "</h2>";
+//     $("#favorites").append(liEl);
  
      
-});
+// });
 
 
 
