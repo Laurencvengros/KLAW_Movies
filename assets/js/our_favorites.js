@@ -53,35 +53,35 @@ $("#kelsie5").on("click", function(){
 
 $("#lauren1").on("click", function(){
     clearMovie();
-    searchMovie = "";
+    searchMovie = "Spirited Away";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#lauren2").on("click", function(){
     clearMovie();
-    searchMovie = "";
+    searchMovie = "My Neighbor Totoro";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#lauren3").on("click", function(){
     clearMovie();
-    searchMovie = "";
+    searchMovie = "Your Name";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#lauren4").on("click", function(){
     clearMovie();
-    searchMovie = "";
+    searchMovie = "Sinister";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
 
 $("#lauren5").on("click", function(){
     clearMovie();
-    searchMovie = "";
+    searchMovie = "As Above So Below";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
@@ -109,7 +109,7 @@ $("#drew3").on("click", function(){
 
 $("#drew4").on("click", function(){
     clearMovie();
-    searchMovie = "The Shawsahnk Redemption";
+    searchMovie = "Treasure Planet";
     getMovie(searchMovie);
     getPosters(searchMovie);
 });
