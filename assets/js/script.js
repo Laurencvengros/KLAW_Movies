@@ -300,6 +300,8 @@ $("#favBack").on("click", function() {
     $("#displayFav").hide();
 })
 
+// End of coding for top 20 page
+
 $("#triviaBtn").on("click", function(){
     $("#homeSec").hide();
     $("#aboutSec").hide();
