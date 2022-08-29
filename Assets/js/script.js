@@ -1,8 +1,3 @@
-// Case 0 - User is adding favorites for the first time nothing in local storage
-// Case 1 - User has refreshed the page 
-// Case 2 - User has refreshed the page and is adding more favorites
-// Case 3 - User has added maximum number of favorites
-
 var omdbAPIkey = "31aa90e4";
 var imdbAPIkey = "k_lomgkwyt";
 var titleEl = document.getElementById("#movietitle");
@@ -21,7 +16,7 @@ let savedPosters = JSON.parse(localStorage.getItem('favMovies'));
 $("#favBtn").hide();
 
 if(savedPosters != null){
-    console.log("Loading posters");
+    // console.log("Loading posters");
     favMovies = savedPosters;
     // $("#favorites").empty();
     
@@ -53,16 +48,18 @@ $("#searchBtn").on("click", async function(event){
             $("#selectVal").append("<option>"+$("#searchmovies").val()+"</option>");
 
         }
-        console.log("Here")
+        // console.log("Here")
     }
     else if ($("#selectVal").val() != "Recent Searches"){
         searchMovie = $("#selectVal").val();
     }
     else {
-        console.log("Error Nothing selected for search")
+        console.log("Error Nothing selected for search");
     }
 
+    
     if (searchMovie) {
+        clearMovie();
         $("#favBtn").show();
         $(".display-poster").css("display", "none");
 
@@ -73,18 +70,18 @@ $("#searchBtn").on("click", async function(event){
         TextDiv.append(imgEl);
         card.append(TextDiv);
 
-        console.log(TextDiv);
+        // console.log(TextDiv);
 
         if ($("input[type='radio']:checked").attr("id") === "imdbSearch"){
-            clearMovie();
+            // clearMovie();
             getIMDBmovies();
         }
         else if($("input[type='radio']:checked").attr("id") === "omdbSearch"){
-            clearMovie();
+            // clearMovie();
             getOMDBmovies();
         }
         else if ($("input[type='radio']:checked").attr("id") === "tmdbSearch"){
-            clearMovie();
+            // clearMovie();
             getTMDBmovies();
         }
         else{
@@ -115,7 +112,7 @@ $("#favBtn").on("click", function(event){
     if (notSaved){
 
         if (pboxIndex === 8) {
-            console.log("save after pbox 8 -- pbox is " + pboxIndex)
+            //console.log("save after pbox 8 -- pbox is " + pboxIndex)
             favMovies.personalSaves.shift();
             favMovies.personalSaves.push(personal);
             localStorage.setItem("favMovies", JSON.stringify(favMovies));
@@ -127,7 +124,7 @@ $("#favBtn").on("click", function(event){
            
         }
         else{
-            console.log("save before pbox 8 -- pbox is " + pboxIndex)
+            // console.log("save before pbox 8 -- pbox is " + pboxIndex)
             favMovies.personalSaves.push(personal);
             localStorage.setItem("favMovies", JSON.stringify(favMovies));
             $("#pbox" + pboxIndex).empty();
