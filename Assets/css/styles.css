@@ -28,3 +28,48 @@
 .columns {
     padding: 60px;
 }
+
+.columnis-three-fifths {
+    align-content: center;
+    justify-content: center;
+}
+
+.kelsieszost {
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.placeholder {
+    max-width: fit-content;
+}
+
+.aboutSec-kelsie {
+    max-width: fit-content;
+}
+
+.kelsie-paragraph {
+    padding-left: 50px;
+}
+
+.person-description {
+    padding-right: 50px;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.game-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+movie-poster-trivia {
+    padding left: 100px;
+}
