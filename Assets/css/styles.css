@@ -28,3 +28,15 @@
 .columns {
     padding: 60px;
 }
+
+.added{
+    color: green;
+    font-size: larger;
+    font-weight: 500;
+}
+
+#favorites {
+    display: inline-block;
+    margin-right: 100px;
+    
+    }
