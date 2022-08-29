@@ -57,7 +57,7 @@
 </section>
 <section id="homeSec">
     <div class="container">
-        <div class="columns is-vcentered mt-6">
+        <div class="columns is-vcentered"> <!-- mt-6 -->
             <div class="column is-two-thirds">
                 <p class="title">
                     KLAW MOVIES
@@ -70,16 +70,40 @@
                 <div class="field has-addons">
                     <div class="control is-expanded">
                         <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
-                        <!-- Error Message Upon Empty Search -->
-                        <span id="errorMessage">   
-                        </span>
+                        
+                        <label class="radio">
+                            <input type="radio" name="answer" id="imdbSearch" checked>
+                            IMDB
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer" id="omdbSearch">
+                            OMDB
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer" id="tmdbSearch">
+                            TMDB
+                        </label>
                     </div>
                     <div class="control">
                         <a class="button is-info" id="searchBtn">
                             Search
                         </a> 
                     </div>
+                    <!-- Error Message Upon Empty Search -->
+                    
+                    
+                
                 </div>
+
+                <div class="control">
+                    <!-- <label>Recent Searches:</label> -->
+                    <div class="select">
+                        <select id="selectVal">
+                        <option>Recent Searches</option>
+                        </select>
+                    </div>
+                </div>
+                <span id="errorMessage"><h5></h5></span>
             </div>
         </div>
     </div>
@@ -135,21 +159,63 @@
 </section>
 <section id="personalizeSec">
     <div class="container">
+        <p class="title">
+            Personalize Page
+        </p>
+        <p class="subtitle is-5">
+            Create your favorites list using the search function
+        </p>
         <div class="columns is-vcentered mt-6">
             <div class="column is-two-thirds">
-                <p class="title">
-                    Personalize Page
-                </p>
-                <p class="subtitle is-5">
-                    Create your favorites list using the search function
-                </p>
-                <ul id ="favorites"></ul>
+                
+                <!-- <ul id ="favorites"></ul> -->
+                <div class="tile is-ancestor p-1 is-align-items-center level-item">
+
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox0">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox1">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                        
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox2">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox3">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+            
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox4">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox5">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox6">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox7">
+                                <img src="./Assets/Images/gray.jpg">
+                            </div>
+                        </div>
+                </div>
+                
             </div>
             <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                </p>
-                
+                <div class="container" id="personalMainImg">
+                    <img src="./Assets/Images/gray.jpg">
+                </div>
             </div>
         </div>
     </div>
