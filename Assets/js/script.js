@@ -41,6 +41,18 @@ $("#searchBtn").on("click", async function(event){
 
     if ($("#searchmovies").val()) {
         searchMovie = $("#searchmovies").val();
+
+        //append search history
+        if ($("#selectVal").val() === "Recent Searches"){
+
+            $("#selectVal").empty();
+            $("#selectVal").append("<option>"+$("#searchmovies").val()+"</option>");
+
+        }
+        else {
+            $("#selectVal").append("<option>"+$("#searchmovies").val()+"</option>");
+
+        }
         console.log("Here")
     }
     else if ($("#selectVal").val() != "Recent Searches"){
@@ -54,11 +66,14 @@ $("#searchBtn").on("click", async function(event){
         $("#favBtn").show();
         $(".display-poster").css("display", "none");
 
+        //set loading image
         var card = $("<div class='card'>");
         var TextDiv = $("<div>");
         var imgEl=$("<img>").attr('src',"./assets/images/loading.gif").css('height', '500px');
         TextDiv.append(imgEl);
         card.append(TextDiv);
+
+        console.log(TextDiv);
 
         if ($("input[type='radio']:checked").attr("id") === "imdbSearch"){
             clearMovie();
