@@ -42,8 +42,260 @@ $("#top20Btn").on("click", function(){
     $("#personalizeSec").hide();
     $("#top20Sec").show();
     $("#triviaSec").hide();
+    $("#displayFav").hide();
 
 });
+
+// Coding for each of the buttons within the top 20 section
+
+$("#kelsie1").on("click", function(){
+    clearMovie();
+    searchMovie = "Uptown Girls";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#kelsie2").on("click", function(){
+    clearMovie();
+    searchMovie = "Ella Enchanted";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#kelsie3").on("click", function(){
+    clearMovie();
+    searchMovie = "New York Minute";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#kelsie4").on("click", function(){
+    clearMovie();
+    searchMovie = "The Lorax";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#kelsie5").on("click", function(){
+    clearMovie();
+    searchMovie = "The Social Network";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#lauren1").on("click", function(){
+    clearMovie();
+    searchMovie = "Spirited Away";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#lauren2").on("click", function(){
+    clearMovie();
+    searchMovie = "My Neighbor Totoro";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#lauren3").on("click", function(){
+    clearMovie();
+    searchMovie = "Your Name";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#lauren4").on("click", function(){
+    clearMovie();
+    searchMovie = "Sinister";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#lauren5").on("click", function(){
+    clearMovie();
+    searchMovie = "As Above So Below";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#drew1").on("click", function(){
+    clearMovie();
+    searchMovie = "Hitch";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#drew2").on("click", function(){
+    clearMovie();
+    searchMovie = "The Secret Life of Walter Mitty";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#drew3").on("click", function(){
+    clearMovie();
+    searchMovie = "The Green Mile";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#drew4").on("click", function(){
+    clearMovie();
+    searchMovie = "Treasure Planet";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#drew5").on("click", function(){
+    clearMovie();
+    searchMovie = "Guardians of the Galaxy Vol. 2";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#will1").on("click", function(){
+    clearMovie();
+    searchMovie = "Back to the Future Part II";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#will2").on("click", function(){
+    clearMovie();
+    searchMovie = "Terminator 2";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#will3").on("click", function(){
+    clearMovie();
+    searchMovie = "Forest Gump";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#will4").on("click", function(){
+    clearMovie();
+    searchMovie = "Memento";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#will5").on("click", function(){
+    clearMovie();
+    searchMovie = "Black Panther";
+    getMovie(searchMovie);
+    getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
+});
+
+$("#favBack").on("click", function() {
+    clearMovie();
+    $("#kelsieFavs").show();
+    $("#laurenFavs").show();
+    $("#drewFavs").show();
+    $("#willFavs").show();
+    $("#displayFav").hide();
+})
 
 $("#triviaBtn").on("click", function(){
     $("#homeSec").hide();
