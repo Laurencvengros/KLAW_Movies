@@ -11,128 +11,236 @@
 </head>
 <body>
 <section class="hero is-info is-halfheight-with-navbar block">
-    <div class="hero-head">
-        <nav class="navbar-card">
-            <div class="container.hero">
-                <div class="navbar-brand is-size-4">
-                    <span class="navbar-burger" data-target="navbarMenuHeroB">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </div>
-                <div id="navbarMenuHeroB" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a class="navbar-item is-active">
-                            HOME
-                        </a>
-                        <a class="navbar-item">
-                            ABOUT
-                        </a>
-                        <a class="navbar-item is-active">
-                            PERSONALIZE
-                        </a>
-                        <a class="navbar-item">
-                            TOP 20
-                        </a>
-                        <span class="navbar-item">
-                            <a class="button is-light is-large">
-                                <span class="icon">
-                                    <i class="fab fa-github"></i>
-                                </span>
-                            </a>
-                        </span>
-                        
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+  <div class="hero-head">
+    <nav class="navbar-card">
+      <div class="container.hero">
+        <div class="navbar-brand is-size-4">
+          <span class="navbar-burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active">
+              HOME
+            </a>
+            <a class="navbar-item">
+              ABOUT
+            </a>
+            <a class="navbar-item is-active">
+              PERSONALIZE
+            </a>
+            <a class="navbar-item">
+              TOP 20
+            </a>
+            <span class="navbar-item">
+              <a class="button is-light is-large">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </section>
-    <div class="container">
-        <div class="columns is-vcentered mt-6">
-            <div class="column is-two-thirds">
-                <p class="title">
-                    KLAW Top Movies
-                </p>
-                <p class="subtitle is-5">
-                  These are our favorite movies
-                </p>
-            </div>
-            <!-- <div class="column">
-                <div class="field has-addons">
-                    <div class="control is-expanded">
-                        <input type="text" class="input" placeholder="Movie Title">
-                    </div>
-                    <div class="control">
-                        <a class="button is-info" id="searchBtn">
-                            Search
-                        </a> 
-                    </div>
-                </div>
-            </div> -->
+  <div class="container">
+    <div class="columns is-vcentered mt-6">
+      <div class="column is-two-thirds">
+        <p class="title">
+          KLAW Top Movies
+        </p>
+        <p class="subtitle is-5">
+          These are our favorite movies
+        </p>
+      </div>     
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>See Kelsie's Top 5 Movies</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
         </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <h2>Kelsie's Top 5</h2>
-        <ul>
-          <li><button class="topFive" id="kelsie1">Uptwon Girls</button></li>
-          <li><button class="topFive" id="kelsie2">Ella Enchanted</button></li>
-          <li><button class="topFive" id="kelsie3">New York Minute</button></li>
-          <li><button class="topFive" id="kelsie4">The Lorax</button></li>
-          <li><button class="topFive" id="kelsie5">The Social Network</button></li>
-        </ul>
-      </div>
-      <div class="column">
-        <h2>Lauren's Top 5</h2>
-        <ul>
-          <li><button class="topFive" id="lauren1">Spirited Away</button></li>
-          <li><button class="topFive" id="lauren2">My Neighbor Totoro</button></li>
-          <li><button class="topFive" id="lauren3">Your Name</button></li>
-          <li><button class="topFive" id="lauren4">Sinister</button></li>
-          <li><button class="topFive" id="lauren5">As Above So Below</button></li>
-        </ul>
-      </div>
-      <div class="column">
-        <h2>Andrew's Top 5</h2>
-        <ul>
-          <li><button class="topFive" id="drew1">Hitch</button></li>
-          <li><button class="topFive" id="drew2">The Secret Life of Walter Mitty</button></li>
-          <li><button class="topFive" id="drew3">The Green Mile</button></li>
-          <li><button class="topFive" id="drew4">Treasure Planet</button></li>
-          <li><button class="topFive" id="drew5">Guardians of the Galaxy Vol. 2</button></li>
-        </ul>
-      </div>
-      <div class="column">
-        <h2>Will's Top 5</h2>
-        <ul>
-          <li><button class="topFive" id="will1">Back to the Future II</button></li>
-          <li><button class="topFive" id="will2">Terminator II</button></li>
-          <li><button class="topFive" id="will3">Forest Gump</button></li>
-          <li><button class="topFive" id="will4">Memento</button></li>
-          <li><button class="topFive" id="will5">Black Panther</button></li>
-        </ul>
-      </div>
-    </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <div class="column poster">
-                   <!-- <img class = "display-poster" id="poster1" src="./Assets/images/spirited_away_poster.jpg" alt="spirited away poster">
-                    <img class = "display-poster" id="poster2" src="./Assets/images/independence_day_poster.jpg" alt="Independence Day poster">
-                    <img class = "display-poster" id="poster3" src="./Assets/images/insidious_poster.jpg" alt="Insideous poster"> -->
-                    <h2 id="movie-title"></h2>
-                    <div id="movie-poster"></div>
-                    <div id="movie-data"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a class="dropdown-item" id="kelsie1">
+              Uptown Girls
+            </a>
+            <a class="dropdown-item" id="kelsie2">
+              Ella Enchanted
+            </a>
+            <a class="dropdown-item" id="kelsie3">
+              New York Minute
+            </a>
+            <a class="dropdown-item" id="kelsie4">
+              The Lorax
+            </a>
+            <a class="dropdown-item" id="kelsie5">
+              The Social Network
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/js/our_favorites.js"></script>
+    <div class="column">
+      <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>See Lauren's Top 5 Movies</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a class="dropdown-item" id="lauren1">
+              Spirited Away
+            </a>
+            <a class="dropdown-item" id="lauren2">
+              My Neighbor Totoro
+            </a>
+            <a class="dropdown-item" id="lauren3">
+              Your name
+            </a>
+            <a class="dropdown-item" id="lauren4">
+              Sinister
+            </a>
+            <a class="dropdown-item" id="lauren5">
+              As Above So Below
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>See Andrew's Top 5 Movies</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a class="dropdown-item" id="drew1">
+              Hitch
+            </a>
+            <a class="dropdown-item" id="drew2">
+              The Secret Life of Walter Mitty
+            </a>
+            <a class="dropdown-item" id="drew3">
+              The Green Mile
+            </a>
+            <a class="dropdown-item" id="drew4">
+              Treasure Planet
+            </a>
+            <a class="dropdown-item" id="drew5">
+              Guardians fo the Galaxy Vol. 2
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>See Will's Top 5 Movies</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a class="dropdown-item" id="will1">
+              Back to the Future II
+            </a>
+            <a class="dropdown-item" id="will2">
+              Terminator II
+            </a>
+            <a class="dropdown-item" id="will3">
+              Forest Gump
+            </a>
+            <a class="dropdown-item" id="will4">
+              Memento
+            </a>
+            <a class="dropdown-item" id="will5">
+              Black Panther            
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+    <!-- <div class="column">
+      <h2>Kelsie's Top 5</h2>
+      <ul>
+        <li><button class="topFive" id="kelsie1">Uptwon Girls</button></li>
+        <li><button class="topFive" id="kelsie2">Ella Enchanted</button></li>
+        <li><button class="topFive" id="kelsie3">New York Minute</button></li>
+        <li><button class="topFive" id="kelsie4">The Lorax</button></li>
+        <li><button class="topFive" id="kelsie5">The Social Network</button></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>Lauren's Top 5</h2>
+      <ul>
+        <li><button class="topFive" id="lauren1">Spirited Away</button></li>
+        <li><button class="topFive" id="lauren2">My Neighbor Totoro</button></li>
+        <li><button class="topFive" id="lauren3">Your Name</button></li>
+        <li><button class="topFive" id="lauren4">Sinister</button></li>
+        <li><button class="topFive" id="lauren5">As Above So Below</button></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>Andrew's Top 5</h2>
+      <ul>
+        <li><button class="topFive" id="drew1">Hitch</button></li>
+        <li><button class="topFive" id="drew2">The Secret Life of Walter Mitty</button></li>
+        <li><button class="topFive" id="drew3">The Green Mile</button></li>
+        <li><button class="topFive" id="drew4">Treasure Planet</button></li>
+        <li><button class="topFive" id="drew5">Guardians of the Galaxy Vol. 2</button></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>Will's Top 5</h2>
+      <ul>
+        <li><button class="topFive" id="will1">Back to the Future II</button></li>
+        <li><button class="topFive" id="will2">Terminator II</button></li>
+        <li><button class="topFive" id="will3">Forest Gump</button></li>
+        <li><button class="topFive" id="will4">Memento</button></li>
+        <li><button class="topFive" id="will5">Black Panther</button></li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="container-poster">
+    <div class="notification $grey-light">
+      <div class="columns">
+        <div class="column"> 
+          <div class="column poster">
+            <h2 id="movie-title"></h2>
+            <div id="movie-poster"></div>
+            <div id="movie-data"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/our_favorites.js"></script>
 </body>
 </html>
