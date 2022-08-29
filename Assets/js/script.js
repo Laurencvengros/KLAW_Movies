@@ -13,7 +13,35 @@ var personal = {
 };
 
 var savedPosters = JSON.parse(localStorage.getItem('favMovies'));
-console.log(favMovies.personalSaves);
+// console.log(favMovies.personalSaves);
+// Case 0 - User is adding favorites for the first time nothing in local storage
+// Case 1 - User has refreshed the page 
+// Case 2 - User has refreshed the page and is adding more favorites
+// Case 3 - User has added maximum number of favorites
+
+console.log(savedPosters);
+
+
+if(savedPosters !== null){
+    favMovies = savedPosters;
+    $("#favorites").empty();
+    //personal=savedPosters
+    for(var i = 0; i < savedPosters.personalSaves.length; i++){
+        var liEl = document.createElement('li');
+        //console.log(savedPosters.personalSaves[i].poster);
+        liEl.innerHTML = `<img src="`  + savedPosters.personalSaves[i].poster + `">`;
+                    
+                
+        $("#favorites").append(liEl);            
+
+    } 
+    
+   
+}
+
+//$(document).ready(function(){
+ 
+//});
 
 function getPosters(){
     var posterAPI = "https://imdb-api.com/en/API/Search/" + imdbAPIkey + "/" + searchMovie;
@@ -27,7 +55,7 @@ function getPosters(){
         .then(function(data){
             var poster = data.results[0].image;
 
-                console.log(poster);
+                //console.log(poster);
 
 
             var card = $("<div class='card'>")
@@ -38,55 +66,46 @@ function getPosters(){
 
             $("#movie-poster").append(card);
 
-            $("#favBtn").on("click", function(){
    
-    
-
-                    personal.movieTitle=$("#searchmovies").val();
-                    personal.poster = data.results[0].image;
-                    console.log(personal.poster);
-                    console.log(personal);
-                    console.log(favMovies.personalSaves);
-                    favMovies.personalSaves.push(personal);
-                    localStorage.setItem("favMovies", JSON.stringify(favMovies));
-                    console.log(localStorage.getItem("favMovies"));
-                
-                    var liEl = document.createElement('li');
-                    liEl.innerHTML = "<h2>"  + personal.movieTitle + "</h2>";
-                    $("#favorites").append(liEl);
-
-                    var savedPosters = JSON.parse(localStorage.getItem('favMovies'));
-                    //console.log(savedPosters.personalSaves[0].movieTitle);
-                    c//onsole.log(savedPosters.personalSaves[0].poster);
-
-                    for(var i = 0; i < savedPosters.personalSaves.length; i++){
-                        var liEl = document.createElement('li');
-                        liEl.innerHTML = "<h2>"  + savedPosters.personalSaves[i].movieTitle + "</h2>";
-                        
-                        //var imgDiv = document.createElement('img');
-                        //imgDiv.innerHTML = "<img>" + savedPosters.personalSaves[i].poster + "<img>";
-                        
-                         
-                        
-                        
-
-                    } 
-                    $("#favorites").append(liEl);
-                    //$("#favorites").append(imgDiv);
-
-                
-                });
-                
-
+           
+            personal.poster = data.results[0].image;
 
         });
 };
 
-$(document).ready(function(){
-    if(savedPosters !== null){
-        personal=savedPosters
+var notSaved = true;
+$("#favBtn").on("click", function(){
+
+    
+    
+    //console.log(personal);
+    console.log(favMovies);
+    localStorage.setItem("favMovies", JSON.stringify(favMovies));
+
+    var liEl = document.createElement('li');
+    // liEl.innerHTML = "<h2>"  + personal.movieTitle + "</h2>";
+    liEl.innerHTML =  `<img src="`  + personal.poster + `">`;
+    $("#favorites").append(liEl);
+    // console.log(personal.poster);
+    // console.log(favMovies);
+    console.log(personal);
+    console.log(favMovies);
+    for (let i = 0; i < favMovies.personalSaves.length; i++) {
+
+        if(personal.poster === favMovies.personalSaves[i].poster) {
+            notSaved = false;
+            break;
+        }
+
     }
-})
+
+    if (notSaved){
+
+        favMovies.personalSaves.push(personal);
+    }
+
+
+});
 
 // $("#favBtn").on("click", function(){
    
@@ -110,7 +129,7 @@ $(document).ready(function(){
 
 function getMovie(){
 var movieTitle = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + searchMovie + "&plot=full&r=json" 
-console.log(searchMovie);
+//console.log(searchMovie);
 
 
 fetch(movieTitle)
@@ -121,20 +140,21 @@ fetch(movieTitle)
     
 })
 .then(function(data){
-    var titleVal = data.Title
-    var yearVal = data.Year
-    var plotVal = data.Plot
-    var ratingVal = data.imdbRating
+    var titleVal = data.Title;
+    personal.movieTitle= data.Title;
+    var yearVal = data.Year;
+    var plotVal = data.Plot;
+    var ratingVal = data.imdbRating;
   
-console.log(titleVal);
-console.log(yearVal);
-console.log(plotVal);
-console.log(ratingVal );
+// console.log(titleVal);
+// console.log(yearVal);
+// console.log(plotVal);
+// console.log(ratingVal );
 
-var titleVal = data.Title
-var yearVal = data.Year
-var plotVal = data.Plot
-var ratingVal = data.imdbRating
+var titleVal = data.Title;
+var yearVal = data.Year;
+var plotVal = data.Plot;
+var ratingVal = data.imdbRating;
 var TitleHeader = $("<h6>");
 var TextDiv = $("<div>");
 var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
@@ -152,7 +172,7 @@ TitleHeader.append(titleEl );
 TextDiv.append(summaryTab);
 TextDiv.append(plotEl);
 $("#movie-data").append(TextDiv);
-$("#movie-title").append(TitleHeader)
+$("#movie-title").append(TitleHeader);
 
 
 
@@ -228,7 +248,7 @@ $("#triviaBtn").on("click", function(){
 });
 
 $("#searchBtn").on("click", function(){
-    console.log($("#searchmovies").val());
+    //console.log($("#searchmovies").val());
     searchMovie = $("#searchmovies").val();
     $(".display-poster").css("display", "none")
 
