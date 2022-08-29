@@ -21,6 +21,11 @@ $("#kelsie1").on("click", function(){
     searchMovie = "Uptown Girls";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#kelsie2").on("click", function(){
@@ -28,6 +33,11 @@ $("#kelsie2").on("click", function(){
     searchMovie = "Ella Enchanted";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#kelsie3").on("click", function(){
@@ -35,6 +45,11 @@ $("#kelsie3").on("click", function(){
     searchMovie = "New York Minute";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#kelsie4").on("click", function(){
@@ -42,6 +57,11 @@ $("#kelsie4").on("click", function(){
     searchMovie = "The Lorax";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#kelsie5").on("click", function(){
@@ -49,6 +69,11 @@ $("#kelsie5").on("click", function(){
     searchMovie = "The Social Network";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#lauren1").on("click", function(){
@@ -56,6 +81,11 @@ $("#lauren1").on("click", function(){
     searchMovie = "Spirited Away";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#lauren2").on("click", function(){
@@ -63,6 +93,11 @@ $("#lauren2").on("click", function(){
     searchMovie = "My Neighbor Totoro";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#lauren3").on("click", function(){
@@ -70,6 +105,11 @@ $("#lauren3").on("click", function(){
     searchMovie = "Your Name";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#lauren4").on("click", function(){
@@ -77,6 +117,11 @@ $("#lauren4").on("click", function(){
     searchMovie = "Sinister";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#lauren5").on("click", function(){
@@ -84,6 +129,11 @@ $("#lauren5").on("click", function(){
     searchMovie = "As Above So Below";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#drew1").on("click", function(){
@@ -91,6 +141,11 @@ $("#drew1").on("click", function(){
     searchMovie = "Hitch";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#drew2").on("click", function(){
@@ -98,6 +153,11 @@ $("#drew2").on("click", function(){
     searchMovie = "The Secret Life of Walter Mitty";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#drew3").on("click", function(){
@@ -105,6 +165,11 @@ $("#drew3").on("click", function(){
     searchMovie = "The Green Mile";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#drew4").on("click", function(){
@@ -112,6 +177,11 @@ $("#drew4").on("click", function(){
     searchMovie = "Treasure Planet";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#drew5").on("click", function(){
@@ -119,6 +189,11 @@ $("#drew5").on("click", function(){
     searchMovie = "Guardians of the Galaxy Vol. 2";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#will1").on("click", function(){
@@ -126,6 +201,11 @@ $("#will1").on("click", function(){
     searchMovie = "Back to the Future Part II";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#will2").on("click", function(){
@@ -133,6 +213,11 @@ $("#will2").on("click", function(){
     searchMovie = "Terminator 2";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#will3").on("click", function(){
@@ -140,6 +225,11 @@ $("#will3").on("click", function(){
     searchMovie = "Forest Gump";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#will4").on("click", function(){
@@ -147,6 +237,11 @@ $("#will4").on("click", function(){
     searchMovie = "Memento";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
 
 $("#will5").on("click", function(){
@@ -154,7 +249,21 @@ $("#will5").on("click", function(){
     searchMovie = "Black Panther";
     getMovie(searchMovie);
     getPosters(searchMovie);
+    $("#kelsieFavs").hide();
+    $("#laurenFavs").hide();
+    $("#drewFavs").hide();
+    $("#willFavs").hide();
+    $("#displayFav").show();
 });
+
+$("#favBack").on("click", function() {
+    clearMovie();
+    $("#kelsieFavs").show();
+    $("#laurenFavs").show();
+    $("#drewFavs").show();
+    $("#willFavs").show();
+    $("#displayFav").hide();
+})
 
 $("#homeBtn").on("click", function(){
     clearMovie()
