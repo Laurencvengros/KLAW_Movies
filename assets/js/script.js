@@ -48,11 +48,11 @@ $("#top20Btn").on("click", function(){
 
 // Coding for each of the buttons within the top 20 section
 
-var dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function(event) {
-  event.stopPropagation();
-  dropdown.classList.toggle('is-active');
-});
+// var dropdown = document.querySelector('.dropdown');
+// dropdown.addEventListener('click', function(event) {
+//   event.stopPropagation();
+//   dropdown.classList.toggle('is-active');
+// });
 
 $("#kelsie1").on("click", function(){
     clearMovie();
