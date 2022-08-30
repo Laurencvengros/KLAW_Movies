@@ -148,11 +148,17 @@ for (let i = 0; i < 8; i++) {
 }
 
 //API call for the posters that also adds items to the home page
-async function getIMDBmovies(){
+function getIMDBmovies(){
     
     var imdbAPI = "https://imdb-api.com/API/AdvancedSearch/" + imdbAPIkey + "/?title=" + searchMovie;
     // console.log(imdbAPI);
-        await fetch(imdbAPI)
+        fetch(imdbAPI)
+        // , { mode: "no-cors", headers: {
+        //     "Content-Security-Policy" : "upgrade-insecure-requests",
+        //     "Access-Control-Allow-Headers": "*"
+        //   }
+            
+        // }
         .then(function(response){
             return response.json();       
             
@@ -205,10 +211,16 @@ async function getIMDBmovies(){
     return true;
 };
 
-async function getTMDBmovies(){
+function getTMDBmovies(){
     var tmDBAPI = `https://api.themoviedb.org/3/search/movie?api_key=ae8cbfc11d012e219d3b44e276a96f51&language=en-US&page=1&include_adult=false&query="` + searchMovie + `"`;
 
-    await fetch(tmDBAPI)
+    fetch(tmDBAPI)
+    // , { headers: {
+    //     "Content-Security-Policy" : "upgrade-insecure-requests",
+    //     "Access-Control-Allow-Headers": "*",
+    //     "Access-Control-Request-Headers" : "*"
+    //   }
+    // })
         .then(function(response){
             return response.json();       
             
@@ -259,10 +271,15 @@ async function getTMDBmovies(){
 };
 
 //API call for movie details that also adds items to the home pages
-async function getOMDBmovies(){
+function getOMDBmovies(){
     var omdbAPI = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + searchMovie + "&plot=full&r=json";
     console.log(omdbAPI);
-    await fetch(omdbAPI)
+    fetch(omdbAPI)
+    // , { mode: "no-cors", headers: {
+    //     "Content-Security-Policy" : "upgrade-insecure-requests",
+    //     "Access-Control-Allow-Headers": "*"
+    //   }
+    // }
         .then(function(response){
         return response.json();
 
