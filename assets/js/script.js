@@ -93,6 +93,8 @@ $("#searchBtn").on("click", async function(event){
 //Add movies to the personalized page
 $("#favBtn").on("click", function(event){
     event.stopPropagation();
+    $("#favBtn").css('display', 'none');
+    $(".added").css('display', 'block').addClass('added');
 
     personal = { movieTitle: "", poster: "" };
     personal.movieTitle = moveTitleGlobal;
@@ -147,6 +149,7 @@ for (let i = 0; i < 8; i++) {
     });
 }
 
+
 //API call for the posters that also adds items to the home page
 async function getIMDBmovies(){
     
@@ -179,13 +182,11 @@ async function getIMDBmovies(){
             $("#movie-data").append(TextDiv);
             $("#movie-title").append(TitleHeader);
 
-            var card = $("<div class='card'>")
+          
             var TextDiv = $("<div>")
             imgEl=$("<img>").attr('src', poster).css('height', '500px');
             TextDiv.append(imgEl)
-            card.append(TextDiv);
-
-            $("#movie-poster").append(card);
+            $("#movie-poster").append(TextDiv);
 
             if (ratingVal > 8){
                 TextDiv.prepend(highRating);
@@ -234,13 +235,11 @@ async function getTMDBmovies(){
             $("#movie-data").append(TextDiv);
             $("#movie-title").append(TitleHeader);
 
-            var card = $("<div class='card'>")
+            
             var TextDiv = $("<div>")
             imgEl=$("<img>").attr('src', poster).css('height', '500px');
             TextDiv.append(imgEl)
-            card.append(TextDiv);
-
-            $("#movie-poster").append(card);
+            $("#movie-poster").append(TextDiv);
 
             if (ratingVal > 8){
                 TextDiv.prepend(highRating);
@@ -287,12 +286,11 @@ async function getOMDBmovies(){
         var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
         var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
 
-        var card = $("<div class='card'>")
+        
         var TextDiv = $("<div>")
         imgEl=$("<img>").attr('src', poster).css('height', '500px');
         TextDiv.append(imgEl)
-        card.append(TextDiv);
-        $("#movie-poster").append(card);
+        $("#movie-poster").append(TextDiv);
 
         TitleHeader.append(titleEl);
         TextDiv.append(summaryTab);
@@ -338,6 +336,9 @@ $("#homeBtn").on("click", function(){
     $("#top20Sec").hide();
     $("#triviaSec").hide();
 
+    $("#favBtn").css('display', 'none');
+    $(".added").css('display', 'none');
+
     clearMovie()
     $(".display-poster").css('display', "inline")
 
@@ -382,18 +383,29 @@ $("#triviaBtn").on("click", function(){
 $("#poster1").on("click", function(){
     clearMovie()
     searchMovie="Spirited Away";
-    getMovie(searchMovie);
+    $("#poster1").css("display", "none");
+    $("#poster2").css("display", "none");
+    $("#poster3").css("display", "none");
+    getIMDBmovies();
 });
 
 $("#poster2").on("click", function(){
     clearMovie()
     searchMovie="Independence Day";
-    getMovie(searchMovie);
+    $("#poster1").css("display", "none");
+    $("#poster2").css("display", "none");
+    $("#poster3").css("display", "none");
+    getIMDBmovies();
+   
 });
 
 $("#poster3").on("click", function(){
     clearMovie()
     searchMovie="Insidious";
-    getMovie(searchMovie);
+    $("#poster1").css("display", "none");
+    $("#poster2").css("display", "none");
+    $("#poster3").css("display", "none");
+    getIMDBmovies();
+    
 });
 

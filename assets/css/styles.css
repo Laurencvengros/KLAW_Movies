@@ -28,3 +28,10 @@
 .columns {
     padding: 1px;
 }
+
+.added{
+    color: green;
+    font-size: larger;
+    font-weight: 500;
+}
+

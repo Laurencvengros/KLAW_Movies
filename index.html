@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/styles.css">
@@ -116,7 +117,9 @@
                     <img class = "display-poster" id="poster2" src="./assets/images/independence_day_poster.jpg" alt="Independence Day poster">
                     <img class = "display-poster" id="poster3" src="./assets/images/insidious_poster.jpg" alt="Insideous poster">
                     <h2 id="movie-title"></h2>
-                    <button id="favBtn">Add To Favorites</button>
+                    
+                    <button id="favBtn" style="display: none">Add To Favorites</button>
+                    <p class="added" style="display:none" >Added To Favorites<i class="fa-solid fa-check"></i></p>
                     <div id="movie-poster"></div>
                     <div id="movie-data"></div>
                     </div>
