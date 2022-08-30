@@ -1,7 +1,7 @@
 var omdbAPI = "31aa90e4";
 var imdbAPIkey = "k_lomgkwyt";
 var titleEl = document.getElementById("#movietitle");
-//searchMovie= $("#searchmovies").val();
+searchMovie= $("#searchmovies").val();
 
 
 // $("#searchBtn").on("click", function(){
@@ -15,6 +15,12 @@ var titleEl = document.getElementById("#movietitle");
 // getPosters();
 
 // });
+
+var dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+  event.stopPropagation();
+  dropdown.classList.toggle('is-active');
+});
 
 $("#kelsie1").on("click", function(){
     clearMovie();
