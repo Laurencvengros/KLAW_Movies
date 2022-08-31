@@ -8,6 +8,8 @@ let favMovies= { personalSaves:[] };
 let moveTitleGlobal = "";
 let posterGlobal = "";
 let pboxIndex = 0;
+let loadingImage = "./assets/images/loading.gif"
+let errorImage = "./assets/images/error.jpg"
 
 //After a refresh check to see if the local storage has values
 let savedPosters = JSON.parse(localStorage.getItem('favMovies'));
@@ -34,6 +36,12 @@ if(savedPosters != null){
 $("#searchBtn").on("click", async function(event){
     event.stopPropagation();
 
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+
     if ($("#searchmovies").val()) {
         searchMovie = $("#searchmovies").val();
 
@@ -48,7 +56,6 @@ $("#searchBtn").on("click", async function(event){
             $("#selectVal").append("<option>"+$("#searchmovies").val()+"</option>");
 
         }
-        // console.log("Here")
     }
     else if ($("#selectVal").val() != "Recent Searches"){
         searchMovie = $("#selectVal").val();
@@ -59,29 +66,16 @@ $("#searchBtn").on("click", async function(event){
 
     
     if (searchMovie) {
-        clearMovie();
+        // clearMovie();
         $("#favBtn").show();
-        $(".display-poster").css("display", "none");
-
-        //set loading image
-        var card = $("<div class='card'>");
-        var TextDiv = $("<div>");
-        var imgEl=$("<img>").attr('src',"./assets/images/loading.gif").css('height', '500px');
-        TextDiv.append(imgEl);
-        card.append(TextDiv);
-
-        // console.log(TextDiv);
 
         if ($("input[type='radio']:checked").attr("id") === "imdbSearch"){
-            // clearMovie();
             getIMDBmovies();
         }
         else if($("input[type='radio']:checked").attr("id") === "omdbSearch"){
-            // clearMovie();
             getOMDBmovies();
         }
         else if ($("input[type='radio']:checked").attr("id") === "tmdbSearch"){
-            // clearMovie();
             getTMDBmovies();
         }
         else{
@@ -141,8 +135,11 @@ for (let i = 0; i < 8; i++) {
     $("#pbox" + i).on("click", function(event){
         event.stopPropagation();
         // console.log(this.innerHTML);
-        personalMainImage.empty();
-        personalMainImage.append(this.innerHTML);
+        // console.log(!this.innerHTML.includes("add_favorites.jpg"));
+        if (!this.innerHTML.includes("add_favorites.jpg")){
+            personalMainImage.empty();
+            personalMainImage.append(this.innerHTML);
+        }
     
     });
 }
@@ -153,56 +150,33 @@ function getIMDBmovies(){
     var imdbAPI = "https://imdb-api.com/API/AdvancedSearch/" + imdbAPIkey + "/?title=" + searchMovie;
     // console.log(imdbAPI);
         fetch(imdbAPI)
-        // , { mode: "no-cors", headers: {
-        //     "Content-Security-Policy" : "upgrade-insecure-requests",
-        //     "Access-Control-Allow-Headers": "*"
-        //   }
-            
-        // }
         .then(function(response){
-            return response.json();       
-            
+            return response.json();
         })
         .then(function(data){
             console.log(data);
             var poster = data.results[0].image;
             var titleVal = data.results[0].title;        
-            var yearVal = data.results[0].description;
+            var yearVal = data.results[0].description.split('(')[1].split('–')[0];
             var plotVal = data.results[0].plot;
             var ratingVal = data.results[0].imDbRating;
-            
-            var TitleHeader = $("<h6>");
-            var TextDiv = $("<div>");
-            var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-            var summaryTab =$("<p>").text("Summary: ");
-            var plotEl = $("<p>").text( plotVal);
-            var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
-            var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
 
-            TitleHeader.append(titleEl);
-            TextDiv.append(summaryTab);
-            TextDiv.append(plotEl);
-            $("#movie-data").append(TextDiv);
-            $("#movie-title").append(TitleHeader);
+            $("#movieTitle").text(titleVal);
+            $("#releaseYear").text(yearVal);
+            $("#moviePoster").attr('src', poster);
+            $("#moviePlot").text("Summary: " + plotVal);
 
-            var card = $("<div class='card'>")
-            var TextDiv = $("<div>")
-            imgEl=$("<img>").attr('src', poster).css('height', '500px');
-            TextDiv.append(imgEl)
-            card.append(TextDiv);
-
-            $("#movie-poster").append(card);
 
             if (ratingVal > 8){
-                TextDiv.prepend(highRating);
+                $("#ratingEl").text("IMDB Rating: " + ratingVal);
             }
             else {
-                TextDiv.prepend(ratingEl);
+                $("#ratingEl").text("IMDB Rating: " + ratingVal + " (Highly Rated!)");
             }
             
             posterGlobal = poster;
             moveTitleGlobal = titleVal;
-            console.log(moveTitleGlobal + " " + posterGlobal);
+            // console.log(moveTitleGlobal + " " + posterGlobal);
 
            
             return true;
@@ -215,12 +189,6 @@ function getTMDBmovies(){
     var tmDBAPI = `https://api.themoviedb.org/3/search/movie?api_key=ae8cbfc11d012e219d3b44e276a96f51&language=en-US&page=1&include_adult=false&query="` + searchMovie + `"`;
 
     fetch(tmDBAPI)
-    // , { headers: {
-    //     "Content-Security-Policy" : "upgrade-insecure-requests",
-    //     "Access-Control-Allow-Headers": "*",
-    //     "Access-Control-Request-Headers" : "*"
-    //   }
-    // })
         .then(function(response){
             return response.json();       
             
@@ -228,37 +196,21 @@ function getTMDBmovies(){
         .then(function(data){
             var poster = "https://image.tmdb.org/t/p/w500" + data.results[0].poster_path;
             var titleVal = data.results[0].title;        
-            var yearVal = data.results[0].release_date;
+            var yearVal = data.results[0].release_date.split('-')[0];
             var plotVal = data.results[0].overview;
             var ratingVal = data.results[0].vote_average;
-            
-            var TitleHeader = $("<h6>");
-            var TextDiv = $("<div>");
-            var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-            var summaryTab =$("<p>").text("Summary: ");
-            var plotEl = $("<p>").text( plotVal);
-            var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
-            var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
 
-            TitleHeader.append(titleEl);
-            TextDiv.append(summaryTab);
-            TextDiv.append(plotEl);
-            $("#movie-data").append(TextDiv);
-            $("#movie-title").append(TitleHeader);
+            $("#movieTitle").text(titleVal);
+            $("#releaseYear").text(yearVal);
+            $("#moviePoster").attr('src', poster);
+            $("#moviePlot").text("Summary: " + plotVal);
 
-            var card = $("<div class='card'>")
-            var TextDiv = $("<div>")
-            imgEl=$("<img>").attr('src', poster).css('height', '500px');
-            TextDiv.append(imgEl)
-            card.append(TextDiv);
-
-            $("#movie-poster").append(card);
 
             if (ratingVal > 8){
-                TextDiv.prepend(highRating);
+                $("#ratingEl").text("IMDB Rating: " + ratingVal);
             }
             else {
-                TextDiv.prepend(ratingEl);
+                $("#ratingEl").text("IMDB Rating: " + ratingVal + " (Highly Rated!)");
             }
             
             posterGlobal = poster;
@@ -275,11 +227,6 @@ function getOMDBmovies(){
     var omdbAPI = "http://www.omdbapi.com/?apikey=31aa90e4&t=" + searchMovie + "&plot=full&r=json";
     console.log(omdbAPI);
     fetch(omdbAPI)
-    // , { mode: "no-cors", headers: {
-    //     "Content-Security-Policy" : "upgrade-insecure-requests",
-    //     "Access-Control-Allow-Headers": "*"
-    //   }
-    // }
         .then(function(response){
         return response.json();
 
@@ -296,32 +243,17 @@ function getOMDBmovies(){
         var plotVal = data.Plot;
         var ratingVal = data.imdbRating;
 
-        var TitleHeader = $("<h6>");
-        var TextDiv = $("<div>");
-        var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-        var summaryTab =$("<p>").text("Summary: ");
-        var plotEl = $("<p>").text( plotVal);
-        var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
-        var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
+        $("#movieTitle").text(titleVal);
+        $("#releaseYear").text(yearVal);
+        $("#moviePoster").attr('src', poster);
+        $("#moviePlot").text("Summary: " + plotVal);
 
-        var card = $("<div class='card'>")
-        var TextDiv = $("<div>")
-        imgEl=$("<img>").attr('src', poster).css('height', '500px');
-        TextDiv.append(imgEl)
-        card.append(TextDiv);
-        $("#movie-poster").append(card);
 
-        TitleHeader.append(titleEl);
-        TextDiv.append(summaryTab);
-        TextDiv.append(plotEl);
-        $("#movie-data").append(TextDiv);
-        $("#movie-title").append(TitleHeader);
-           
         if (ratingVal > 8){
-            TextDiv.prepend(highRating);
+            $("#ratingEl").text("IMDB Rating: " + ratingVal);
         }
         else {
-            TextDiv.prepend(ratingEl);
+            $("#ratingEl").text("IMDB Rating: " + ratingVal + " (Highly Rated!)");
         }
 
         posterGlobal = poster;
@@ -332,6 +264,34 @@ function getOMDBmovies(){
 
     return true;
 };
+
+
+//Modal Open and close functionality
+const openEls = document.querySelectorAll("[data-open]");
+const closeEls = document.querySelectorAll("[data-close]");
+const isVisible = "is-visible";
+ 
+for(const el of openEls) {
+  el.addEventListener("click", function() {
+    const modalId = this.dataset.open;
+    document.getElementById(modalId).classList.add(isVisible);
+  });
+};
+
+for (const el of closeEls) {
+    console.log(el);
+    el.addEventListener("click", function() {
+        document.querySelector(".modal.is-visible").classList.remove(isVisible);
+        console.log("Here");
+    });
+}
+ 
+document.addEventListener("keyup", e => {
+  if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  }
+});
+
 
 //Clear movie details and posters form home page
 function clearMovie(){
@@ -355,7 +315,7 @@ $("#homeBtn").on("click", function(){
     $("#top20Sec").hide();
     $("#triviaSec").hide();
 
-    clearMovie()
+    // clearMovie()
     $(".display-poster").css('display', "inline")
 
 });
@@ -397,20 +357,42 @@ $("#triviaBtn").on("click", function(){
 });
 
 $("#poster1").on("click", function(){
-    clearMovie()
+    // clearMovie()
+    $("#favBtn").show();
     searchMovie="Spirited Away";
-    getMovie(searchMovie);
+    getTMDBmovies()
+    // getMovie(searchMovie);
 });
 
 $("#poster2").on("click", function(){
-    clearMovie()
+    // clearMovie()
+    $("#favBtn").show();
     searchMovie="Independence Day";
-    getMovie(searchMovie);
+    getTMDBmovies()
+    // getMovie(searchMovie);
 });
 
 $("#poster3").on("click", function(){
-    clearMovie()
+    // clearMovie()
+    $("#favBtn").show();
     searchMovie="Insidious";
-    getMovie(searchMovie);
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster4").on("click", function(){
+    // clearMovie()
+    $("#favBtn").show();
+    searchMovie="The Devil Wears Prada";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster5").on("click", function(){
+    // clearMovie()
+    $("#favBtn").show();
+    searchMovie="The English Patient";
+    getTMDBmovies()
+    // getMovie(searchMovie);
 });
 

@@ -8,296 +8,303 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <title>KLAW Movies</title> 
+    <title>KLAW @Movies</title> 
 </head>
 <body>
-<section class="hero is-info is-halfheight-with-navbar block">
-    <div class="hero-head">
-        <nav class="navbar-card">
-            <div class="container.hero">
-                <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img src="./assets/images/KLAW_logo.png" width="112" height="28" alt="pawprint klaw movie logo">
-                    </a>
-                    <span class="navbar-burger" data-target="navbarMenuHeroB">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </div>
-                <div id="navbarMenuHeroB" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a class="navbar-item" id="homeBtn">
-                            HOME
-                        </a>
-                        <a class="navbar-item" id="aboutBtn">
-                            ABOUT
-                        </a>
-                        <a class="navbar-item" id="personalizeBtn">
-                            PERSONALIZE
-                        </a>
-                        <a class="navbar-item" id="top20Btn">
-                            TOP 20
-                        </a>
-                        <a class="navbar-item" id="triviaBtn">
-                            TRIVIA
-                        </a>
-                        <span class="navbar-item">
-                            <a class="button is-light is-large">
-                                <span class="icon">
-                                    <i class="fab fa-github"></i>
-                                </span>
-                            </a>
-                        </span>
-                        
+    <div id="app">
+        <section class="hero is-info is-halfheight-with-navbar block m-0" id="topBar">
+            <div class="hero-head">
+                <nav class="navbar-card">
+                    <div class="container.hero">
+                        <div class="navbar-brand al ">
+                            <div class="tile is-justify-content-center">
+                                <p class="has-text-weight-bold is-family-sans-serif has-text-centered" id="headingText">
+                                    KLAW 
+                                    <img src="./assets/images/klawLogo4.jpg" id="klawLogo" alt="pawprint klaw movie logo">
+                                    MOVIES
+                                </p>
+                            </div>
+                            <!-- <span class="navbar-burger" data-target="navbarMenuHeroB">
+                                <span id="homeBtn">Home</span>
+                                <span id="triviaBtn">Games</span>
+                                <span id="aboutBtn">About</span>        
+                            </span> -->
+                        </div>
+                        <div id="navbarMenuHeroB" class="navbar-menu is-active">
+                            <div class="navbar-end">
+                                <a class="navbar-item" id="homeBtn">Home</a>
+                                <a class="navbar-item" id="personalizeBtn">Favorites</a>
+                                <a class="navbar-item" id="top20Btn">Top 20</a>
+                                <a class="navbar-item" id="triviaBtn">Games</a>
+                                <a class="navbar-item" id="aboutBtn">About</a>
+                                <!-- <span class="navbar-burger" data-target="navbarMenuHeroB">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>             -->
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </nav>
             </div>
-        </nav>
-    </div>
-</section>
-<section id="homeSec">
-    <div class="container">
-        <div class="columns is-vcentered"> <!-- mt-6 -->
-            <div class="column is-two-thirds">
-                <p class="title">
-                    KLAW MOVIES
-                </p>
-                <p class="subtitle is-5">
-                    Start by searching for your favorite movie.
-                </p>
-            </div>
-            <div class="column">
-                <div class="field has-addons">
-                    <div class="control is-expanded">
-                        <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
-                        
-                        <label class="radio">
-                            <input type="radio" name="answer" id="imdbSearch" checked>
-                            IMDB
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="answer" id="omdbSearch">
-                            OMDB
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="answer" id="tmdbSearch">
-                            TMDB
-                        </label>
-                    </div>
-                    <div class="control">
-                        <a class="button is-info" id="searchBtn">
-                            Search
-                        </a> 
-                    </div>
-                    <!-- Error Message Upon Empty Search -->
-                    
-                    
-                
-                </div>
+        </section>
+        
+        <section id="homeSec">
 
-                <div class="control">
-                    <!-- <label>Recent Searches:</label> -->
-                    <div class="select">
-                        <select id="selectVal">
-                        <option>Recent Searches</option>
-                        </select>
-                    </div>
-                </div>
-                <span id="errorMessage"><h5></h5></span>
-            </div>
-        </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <div class="column poster">
-                    <img class = "display-poster" id="poster1" src="./assets/images/spirited_away_poster.jpg" alt="spirited away poster">
-                    <img class = "display-poster" id="poster2" src="./assets/images/independence_day_poster.jpg" alt="Independence Day poster">
-                    <img class = "display-poster" id="poster3" src="./assets/images/insidious_poster.jpg" alt="Insideous poster">
-                    <h2 id="movie-title"></h2>
-                    <button id="favBtn">Add To Favorites</button>
-                    <div id="movie-poster"></div>
-                    <div id="movie-data"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="aboutSec">
-    <div class="container">
-        <div class="columns is-vcentered mt-6">
-            <div class="column is-two-thirds">
-                <p class="title">
-                    About US
-                </p>
-                <p class="subtitle is-5">
-                    Learn more about us here...
-                </p>
-            </div>
-            <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
-                    </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="personalizeSec">
-    <div class="container">
-        <p class="title">
-            Personalize Page
-        </p>
-        <p class="subtitle is-5">
-            Create your favorites list using the search function
-        </p>
-        <div class="columns is-vcentered mt-6">
-            <div class="column is-two-thirds">
-                
-                <!-- <ul id ="favorites"></ul> -->
-                <div class="tile is-ancestor p-1 is-align-items-center level-item">
+            <div class="container-poster notification $grey-light p-1 m-0" id="homeMiddleMovies">
+                <div class="tile is-justify-content-right">
+                    <div class="field has-addons" id="searchArea">
+                        <div class="control is-expanded">
+                            <input type="text" class="input is-small" id="searchmovies" placeholder="Movie Title">
+                            <div class="tile tile is-justify-content-right">
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="imdbSearch" checked>
+                                    IMDB
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="omdbSearch">
+                                    OMDB
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="tmdbSearch">
+                                    TMDB
+                                </label>
+                            </div>
+                            <div class="control tile tile is-justify-content-right">
+                                <!-- <label>Recent Searches:</label> -->
+                                <div class="select is-small">
+                                    <select id="selectVal">
+                                        <option>Recent Searches</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox0">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox1">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
+                        <div class="control"> 
+                            <a class="button is-info is-small open-modal" id="searchBtn" data-open="modal1">Search</a> 
+                        </div>
+
                         
+                        
+                        <!-- Error Message Upon Empty Search -->
+
+                        <div><span id="errorMessage"><h5></h5></span></div>
+                    </div>
+                </div>
+                <div class="tile is-justify-content-center">
+                    <div class="columns is-vcentered">
+                        <div class="column poster" id="posterColumn"> 
+                            <img class = "display-poster" id="poster1" src="./assets/images/spirited_away_poster.jpg" alt="spirited away poster" data-open="modal1">
+                            <img class = "display-poster" id="poster2" src="./assets/images/independence_day_poster.jpg" alt="Independence Day poster" data-open="modal1">
+                            <img class = "display-poster" id="poster3" src="./assets/images/insidious_poster.jpg" alt="Insideous poster" data-open="modal1">
+                            <img class = "display-poster" id="poster4" src="./assets/images/the_devil_wears_prada.jpg" alt="The Devil Wears Prada" data-open="modal1">
+                            <img class = "display-poster" id="poster5" src="./assets/images/the_english_patient.jpg" alt="The English Patient" data-open="modal1">
                         </div>
-            
-                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox2">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox3">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
-            
+                    </div>
+                </div>
+            </div>
+
+            <div class="title m-0 has-text-centered" id="homeMiddle">
+                <div class="columns is-vcentered m-0"> <!-- mt-6 -->
+                    <div class="column m-0">
+                        <p class="is-size-6"></p>
+                    </div>
+                    <div class="column m-0">
+                        <p class="is-size-6">Search for movies</p>
+                    </div>
+                    <div class="column m-0">
+                        <p class="is-size-6"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="button" class="open-modal" data-open="modal1">...</button> -->
+ 
+            <div class="modal" id="modal1">
+                <div class="modal-card">
+                    
+                    <header class="modal-card-head">
+                        <button class="modal-close" aria-label="close modal" data-close></button>
+                        <p class="modal-card-title is-size-2" id="movieTitle"></p>
+                        <br>
+                        <p class="modal-card-title is-size-3" id="releaseYear"></p>
+                        <br>
+                        <!-- <button class="delete" aria-label="close" data-close></button> -->
+                        <button id="favBtn">Add To Favorites</button>
+                    </header>
+                    <section class="modal-card-body">
+                            <div><img src="./assets/images/loading.gif" id="moviePoster" attr="Movie Title"></div>
+                            <div id="ratingEl"></div>
+                            <div id="moviePlot"></div>
+                    </section>
+                    <footer class="modal-footer">
+                        <button class="button" aria-label="close modal" data-close>Close</button>
+                    </footer>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="aboutSec">
+            <div class="container">
+                <div class="columns is-vcentered mt-6">
+                    <div class="column is-two-thirds">
+                        <p class="title">
+                            About US
+                        </p>
+                        <p class="subtitle is-5">
+                            Learn more about us here...
+                        </p>
+                    </div>
+                    <div class="column">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-about">
+                <div class="notification $grey-light">
+                    <div class="columns">
+                        <div class="column"> 
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
+                            </p>
                         </div>
-            
-                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox4">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox5">
-                                <img src="./assets/images/gray.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personalizeSec">
+            <div class="tile notification $grey-light p-1 m-0 is-flex-wrap-nowrap" id="pMiddle">
+                <div class="columns is-vcentered m-0">
+                    <div class="column is-two-thirds">
+                        <!-- <ul id ="favorites"></ul> -->
+                        <div class="tile is-ancestor p-1 is-align-items-center level-item is-flex-wrap-nowrap">
+
+                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox0">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox1">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
                             </div>
                 
-                        </div>
-            
-                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox6">
-                                <img src="./assets/images/gray.jpg">
+                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox2">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox3">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
                             </div>
-                            <div class="box is-align-items-center level-item is-clickable" id="pbox7">
-                                <img src="./assets/images/gray.jpg">
-                            </div>
-                        </div>
-                </div>
                 
-            </div>
-            <div class="column">
-                <div class="container" id="personalMainImg">
-                    <img src="./assets/images/gray.jpg">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
-                    </p>
+                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox4">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox5">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+                            </div>
+                
+                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox6">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+
+                                <div class="box is-align-items-center level-item is-clickable" id="pbox7">
+                                    <img src="./assets/images/add_favorites.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="column">
+                        <div class="container" id="personalMainImg"><img src="./assets/images/primaryFavorite.jpg"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<section id="top20Sec">
-    <div class="container">
-        <div class="columns is-vcentered mt-6">
-            <div class="column is-two-thirds">
-                <p class="title">
-                    Here are our top 20
-                </p>
-                <p class="subtitle is-5">
-                    See what we choose
-                </p>
-            </div>
-            <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
-                    </p>
+            <div class="title m-0 has-text-centered" id="homeMiddle">
+                <div class="columns is-vcentered m-0"> <!-- mt-6 -->
+                    <div class="column m-0">
+                        <p class="is-size-6"></p>
+                    </div>
+                    <div class="column m-0">
+                        <p class="is-size-6">Saved favorites</p>
+                    </div>
+                    <div class="column m-0">
+                        <p class="is-size-6"></p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<section id="triviaSec">
-    <div class="container">
-        <div class="columns is-vcentered mt-6">
-            <div class="column is-two-thirds">
-                <p class="title">
-                    Here is a fun trivia game
-                </p>
-                <p class="subtitle is-5">
-                    Select your options and start the game
-                </p>
-            </div>
-            <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-poster">
-        <div class="notification $grey-light">
-            <div class="columns">
-                <div class="column"> 
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
-                    </p>
+        </section>
+
+        <section id="top20Sec">
+            <div class="container">
+                <div class="columns is-vcentered mt-6">
+                    <div class="column is-two-thirds">
+                        <p class="title">Here are our top 20</p>
+                        <p class="subtitle is-5">See what we choose</p>
+                    </div>
+                    <div class="column">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="container-poster">
+                <div class="notification $grey-light">
+                    <div class="columns">
+                        <div class="column"> 
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="triviaSec">
+            <div class="container">
+                <div class="columns is-vcentered mt-6">
+                    <div class="column is-two-thirds">
+                        <p class="title">Here is a fun trivia game</p>
+                        <p class="subtitle is-5">Select your options and start the game</p>
+                    </div>
+                    <div class="column">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-poster">
+                <div class="notification $grey-light">
+                    <div class="columns">
+                        <div class="column"> 
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+<footer class="has-background-info has-text-white has-text-centered">
+    <p>The source code is licensed by the team at KLAW Movies Apps.  You can learn more about this project and others at our github page.</p>      
+    <!-- <a class="button is-light is-small"><span class="icon"><i class="fab fa-github"></i></span></a> -->
+</footer>
 </html>
