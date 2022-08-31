@@ -12,7 +12,8 @@ let pboxIndex = 0;
 //After a refresh check to see if the local storage has values
 let savedPosters = JSON.parse(localStorage.getItem('favMovies'));
 
-//Hide add favorites
+    
+    //Hide add favorites
 $("#favBtn").hide();
 
 if(savedPosters != null){
@@ -33,7 +34,32 @@ if(savedPosters != null){
 //Get movie details and posters
 $("#searchBtn").on("click", async function(event){
     event.stopPropagation();
+    personal = { movieTitle: "", poster: "" };
+    personal.movieTitle = moveTitleGlobal;
+    personal.poster = posterGlobal;
+    for (let i = 0; i < favMovies.personalSaves.length; i++) {
+        
+    if($("#searchmovies").val().toUpperCase()!== favMovies.personalSaves[i].movieTitle.toUpperCase()){
+        console.log($("#searchmovies").val().toUpperCase());
+        console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+        //$("#favBtn").show();
+        $("#favBtn").css('display', 'inline');
+        
+        // $(".added").css('display', 'inline').addClass('added');
+        // $("#favBtn").css('display', 'none').removeClass('added');
+    }else{
+        console.log($("#searchmovies").val().toUpperCase());
+        console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+        // $("#favBtn").show();
+        // $("#favBtn").css('display', 'inline')
 
+        $(".added").css('display', 'inline').addClass('added');
+        $("#favBtn").css('display', 'none').removeClass('added');
+        
+    }
+
+
+    }
     if ($("#searchmovies").val()) {
         searchMovie = $("#searchmovies").val();
 
@@ -88,18 +114,21 @@ $("#searchBtn").on("click", async function(event){
             console.log("Error with gathering API search info from search form");
         }
     }
+
 });
 
 //Add movies to the personalized page
 $("#favBtn").on("click", function(event){
     event.stopPropagation();
-    $("#favBtn").css('display', 'none');
-    $(".added").css('display', 'block').addClass('added');
+    $(".added").css('display', 'inline').addClass('added');
+    $("#favBtn").css('display', 'none').removeClass('added');
 
     personal = { movieTitle: "", poster: "" };
     personal.movieTitle = moveTitleGlobal;
     personal.poster = posterGlobal;
     var notSaved = true;
+
+
 
     //Don't add items if they exist on the personalized page
     for (let i = 0; i < favMovies.personalSaves.length; i++) {
@@ -107,7 +136,12 @@ $("#favBtn").on("click", function(event){
         if (personal.movieTitle === favMovies.personalSaves[i].movieTitle) {
             notSaved = false;
             break;
+            
+        }else{
+         
         }
+
+    
     }
 
     //Save new items to local storage and place in memory
@@ -386,16 +420,69 @@ $("#poster1").on("click", function(){
     $("#poster1").css("display", "none");
     $("#poster2").css("display", "none");
     $("#poster3").css("display", "none");
-    getIMDBmovies();
+    getTMDBmovies();
+
+    
+    personal = { movieTitle: "", poster: "" };
+    personal.movieTitle = moveTitleGlobal;
+    
+    for (let i = 0; i < favMovies.personalSaves.length; i++) {
+        
+        if(searchMovie.toUpperCase()!== favMovies.personalSaves[i].movieTitle.toUpperCase()){
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+            $("#favBtn").show();
+            $("#favBtn").css('display', 'inline')
+        
+        
+        }else{
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+       
+
+            $(".added").css('display', 'inline').addClass('added');
+            $("#favBtn").css('display', 'none').removeClass('added');
+        
+        }
+
+
+    }
 });
 
 $("#poster2").on("click", function(){
     clearMovie()
-    searchMovie="Independence Day";
+    searchMovie="Independence Day: RESURGENCE";
     $("#poster1").css("display", "none");
     $("#poster2").css("display", "none");
     $("#poster3").css("display", "none");
-    getIMDBmovies();
+    getTMDBmovies();
+
+    
+    personal = { movieTitle: "", poster: "" };
+    personal.movieTitle = moveTitleGlobal;
+
+    for (let i = 0; i < favMovies.personalSaves.length; i++) {
+        
+        if(searchMovie.toUpperCase()!== favMovies.personalSaves[i].movieTitle.toUpperCase()){
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+            $("#favBtn").show();
+            $("#favBtn").css('display', 'inline')
+        
+        
+        }else{
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+       
+
+            $(".added").css('display', 'inline').addClass('added');
+            $("#favBtn").css('display', 'none').removeClass('added');
+        
+        }
+
+
+    }
+
    
 });
 
@@ -405,7 +492,35 @@ $("#poster3").on("click", function(){
     $("#poster1").css("display", "none");
     $("#poster2").css("display", "none");
     $("#poster3").css("display", "none");
-    getIMDBmovies();
+    getTMDBmovies();
+
+    personal = { movieTitle: "", poster: "" };
+    personal.movieTitle = moveTitleGlobal;
+    
+    for (let i = 0; i < favMovies.personalSaves.length; i++) {
+        
+        if(searchMovie.toUpperCase()!== favMovies.personalSaves[i].movieTitle.toUpperCase()){
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+            $("#favBtn").show();
+            $("#favBtn").css('display', 'inline')
+        
+        
+        }else{
+            console.log(searchMovie.toUpperCase());
+            console.log(favMovies.personalSaves[i].movieTitle.toUpperCase());
+       
+
+            $(".added").css('display', 'inline').addClass('added');
+            $("#favBtn").css('display', 'none').removeClass('added');
+        
+        }
+
+
+    }
     
 });
+
+
+
 
