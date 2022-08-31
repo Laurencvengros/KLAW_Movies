@@ -4,6 +4,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height:100%;
     min-height: 100%;
+    background-color:lightgray;
 }
 
 #app {
@@ -34,9 +35,15 @@ footer p{
 }
 
 #pMiddle{
-    max-height: 80%;
-    padding: 0 !important;
+    display: flex;
+    flex-grow: 0;
+    max-height: 550px;
 }
+
+#personalMainImg, #pbox0, #pbox1, #pbox2, #pbox3, #pbox4, #pbox5, #pbox6, #pbox7{
+    max-width: 95%;
+}
+
 #poster1, #poster2, #poster3, #poster4, #poster5{
     height: 300px;
     margin: 2px;
@@ -64,33 +71,53 @@ footer p{
 }
 
 #klawLogo {
-    width:12%;
+    /* position:relative;
+    top:5px; */
+    width: 30%;
+    border: 3px solid black;
+    border-radius: 10px;
 }
+#textLogo {
+    position:relative;
+    top:20px;
+    font-weight: bold;
+    font-size: 40pt;
 
-#searchArea{
+}
+/* #searchArea{
     padding: 0px;
     float: right;
     align-items: top;
-}
+} */
 
 #homeMiddle{
-    padding:0px;
+    /* 
     border-top: 1px;
     border-bottom: 1px;
     border-left:0;
     border-right:0;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
+    /* display: flex;
+    align-items: center; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 600px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 
-}
+} 
+
 #homeMiddleMovies{
-    border-top: 1px;
+    /* border-top: 1px;
     border-radius: 0;
     border-bottom:0 !important;
     border-left:0;
     border-right:0;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
     min-height: 530px;
     height: 100%;
 
@@ -176,5 +203,11 @@ footer p{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+#siteMapBox{
+    position:relative;
+    top:30px;
+
 }
 

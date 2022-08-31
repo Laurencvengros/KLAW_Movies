@@ -16,33 +16,42 @@
             <div class="hero-head">
                 <nav class="navbar-card">
                     <div class="container.hero">
-                        <div class="navbar-brand al ">
+                        <!-- <div class="navbar-brand al ">
                             <div class="tile is-justify-content-center">
-                                <p class="has-text-weight-bold is-family-sans-serif has-text-centered" id="headingText">
-                                    KLAW 
-                                    <img src="./assets/images/klawLogo4.jpg" id="klawLogo" alt="pawprint klaw movie logo">
-                                    MOVIES
-                                </p>
+                                    
                             </div>
-                            <!-- <span class="navbar-burger" data-target="navbarMenuHeroB">
+                                <span class="navbar-burger" data-target="navbarMenuHeroB">
                                 <span id="homeBtn">Home</span>
                                 <span id="triviaBtn">Games</span>
                                 <span id="aboutBtn">About</span>        
-                            </span> -->
+                                </span>
+                        </div> -->
+
+                        <div class="navbar-brand navbar-start is-active mt-2">
+                            <div class="tile is-justify-content-center">
+                                <img src="./assets/images/KLAW_logo-1.png" id="klawLogo" alt="pawprint klaw movie logo">
+                                <!-- <p id="textLogo">KLAW Movies</p> -->
+                            </div>
+                            <a role="button" class="navbar-burger" data-target="navbarMenuHeroB" aria-label="menu" aria-expanded="false">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                            </a>
                         </div>
-                        <div id="navbarMenuHeroB" class="navbar-menu is-active">
-                            <div class="navbar-end">
+
+                        <div id="navbarMenuHeroB" class="navbar-menu navbar-end">
+                            <div class="navbar-start">
                                 <a class="navbar-item" id="homeBtn">Home</a>
                                 <a class="navbar-item" id="personalizeBtn">Favorites</a>
                                 <a class="navbar-item" id="top20Btn">Top 20</a>
                                 <a class="navbar-item" id="triviaBtn">Games</a>
-                                <a class="navbar-item" id="aboutBtn">About</a>
-                                <!-- <span class="navbar-burger" data-target="navbarMenuHeroB">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </span>             -->
                             </div>
+
+                            <div class="navbar-end">
+                                <a class="navbar-item" id="siteMapBtn">Site Map</a>
+                                <a class="navbar-item" id="aboutBtn">About</a>
+                                <a class="navbar-item" href="https://github.com/Laurencvengros/KLAW_Movies">GitHub</a>
+                            </div>            
                         </div>
                     </div>
                 </nav>
@@ -50,14 +59,20 @@
         </section>
         
         <section id="homeSec">
+            <div class="title notification $grey-light mt-3 ml-3 mr-3 mb-3" id="homeMiddle">
+                <div class="columns">
+                    <!-- <div class="column m-0 p-0">
 
-            <div class="container-poster notification $grey-light p-1 m-0" id="homeMiddleMovies">
-                <div class="tile is-justify-content-right">
-                    <div class="field has-addons" id="searchArea">
-                        <div class="control is-expanded">
-                            <input type="text" class="input is-small" id="searchmovies" placeholder="Movie Title">
-                            <div class="tile tile is-justify-content-right">
-                                <label class="radio">
+                    </div> -->
+                    <div class="column m-0 p-0">
+                        <div class="control is-grouped">
+                            <div class="tile is-justify-content-right m-0 p-0">
+                                <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
+                                <a class="button is-info open-modal" id="searchBtn" data-open="modal1">Search</a>                         
+                            </div>
+                            
+                            <div class="tile is-justify-content-right m-0 p-0">
+                                <label class="radio is-small">
                                     <input type="radio" name="answer" id="imdbSearch" checked>
                                     IMDB
                                 </label>
@@ -70,27 +85,26 @@
                                     TMDB
                                 </label>
                             </div>
-                            <div class="control tile tile is-justify-content-right">
-                                <!-- <label>Recent Searches:</label> -->
-                                <div class="select is-small">
-                                    <select id="selectVal">
-                                        <option>Recent Searches</option>
-                                    </select>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="column m-0 p-0 is-narrow">
+                        <div class="control tile is-justify-content-left ml-2 mt-0 mr-0 mb-0  p-0">
+                            <!-- <label>Recent Searches:</label> -->
+                            <div class="select is-small">
+                                <select id="selectVal">
+                                    <option>Recent Searches</option>
+                                </select>
                             </div>
                         </div>
-
-                        <div class="control"> 
-                            <a class="button is-info is-small open-modal" id="searchBtn" data-open="modal1">Search</a> 
-                        </div>
-
                         
-                        
-                        <!-- Error Message Upon Empty Search -->
-
-                        <div><span id="errorMessage"><h5></h5></span></div>
                     </div>
                 </div>
+            </div>
+
+            <div class="container-poster notification $grey-light p-1 mt-0 ml-3 mr-3 mb-3" id="homeMiddleMovies">
+                
+                
+
                 <div class="tile is-justify-content-center">
                     <div class="columns is-vcentered">
                         <div class="column poster" id="posterColumn"> 
@@ -104,21 +118,9 @@
                 </div>
             </div>
 
-            <div class="title m-0 has-text-centered" id="homeMiddle">
-                <div class="columns is-vcentered m-0"> <!-- mt-6 -->
-                    <div class="column m-0">
-                        <p class="is-size-6"></p>
-                    </div>
-                    <div class="column m-0">
-                        <p class="is-size-6">Search for movies</p>
-                    </div>
-                    <div class="column m-0">
-                        <p class="is-size-6"></p>
-                    </div>
-                </div>
-            </div>
+            
             <!-- <button type="button" class="open-modal" data-open="modal1">...</button> -->
- 
+            
             <div class="modal" id="modal1">
                 <div class="modal-card">
                     
@@ -139,6 +141,26 @@
                     <footer class="modal-footer">
                         <button class="button" aria-label="close modal" data-close>Close</button>
                     </footer>
+                </div>
+            </div>
+
+            <div class="modal" id="modal2">
+                <div class="modal-background tile is-flex-direction-column is-align-items-center">
+                    <div class="box mr-auto ml-auto mt-20" id="siteMapBox">
+                        <div class="title has-text-centered">
+                            <span class="is-size-1">Site Map</span>
+                        </div>
+                        <ul>
+                            <li><span class="is-underlined has-text-weight-semibold">Home</span> - <span class="is-italic">This is the main page of the application.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">Favorites</span> - <span class="is-italic">Using the Add Favorite, movies saved to this page.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">Top 20</span> - <span class="is-italic">View the top 20 movies selected by the staff at KLAW.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">Games</span> - <span class="is-italic">Play a trivia, matching, or movie title guessing game here.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">Site Map</span> - <span>Breaks out the site into different parts.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">About</span> - <span class="is-italic">Provides background information on the staff at KLAW.</span></li>
+                            <li><span class="is-underlined has-text-weight-semibold">GitHub</span> - <span class="is-italic">Launches GitHub page for the app.</span></li>
+                        </ul>
+                        <button class="button mt-2 has-text-centered" aria-label="close modal" data-close>Close</button>
+                    </div>
                 </div>
             </div>
 
@@ -176,13 +198,54 @@
         </section>
 
         <section id="personalizeSec">
-            <div class="tile notification $grey-light p-1 m-0 is-flex-wrap-nowrap" id="pMiddle">
+            <div class="title notification $grey-light mt-3 ml-3 mr-3 mb-3" id="homeMiddle">
+                <div class="columns">
+                    <!-- <div class="column m-0 p-0">
+
+                    </div> -->
+                    <div class="column m-0 p-0">
+                        <div class="control is-grouped">
+                            <div class="tile is-justify-content-right m-0 p-0">
+                                <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
+                                <a class="button is-info open-modal" id="searchBtn" data-open="modal1">Search</a>                         
+                            </div>
+                            
+                            <div class="tile is-justify-content-right m-0 p-0">
+                                <label class="radio is-small">
+                                    <input type="radio" name="answer" id="imdbSearch" checked>
+                                    IMDB
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="omdbSearch">
+                                    OMDB
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="tmdbSearch">
+                                    TMDB
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column m-0 p-0 is-narrow">
+                        <div class="control tile is-justify-content-left ml-2 mt-0 mr-0 mb-0  p-0">
+                            <!-- <label>Recent Searches:</label> -->
+                            <div class="select is-small">
+                                <select id="selectVal">
+                                    <option>Recent Searches</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="tile notification $grey-light p-2 mr-3 mb-3 ml-3 is-flex-wrap-nowrap" id="pMiddle">
                 <div class="columns is-vcentered m-0">
                     <div class="column is-two-thirds">
                         <!-- <ul id ="favorites"></ul> -->
-                        <div class="tile is-ancestor p-1 is-align-items-center level-item is-flex-wrap-nowrap">
+                        <div class="tile is-parent p-1 is-align-items-center level-item">
 
-                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="tile is-child is-vertical p-0 m-1" style="max-width:200px;">
                                 <div class="box is-align-items-center level-item is-clickable" id="pbox0">
                                     <img src="./assets/images/add_favorites.jpg">
                                 </div>
@@ -192,7 +255,7 @@
                                 </div>
                             </div>
                 
-                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="tile is-child is-vertical p-0 m-1" style="max-width:200px;">
                                 <div class="box is-align-items-center level-item is-clickable" id="pbox2">
                                     <img src="./assets/images/add_favorites.jpg">
                                 </div>
@@ -202,7 +265,7 @@
                                 </div>
                             </div>
                 
-                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="tile is-child is-vertical p-0 m-1" style="max-width:200px;">
                                 <div class="box is-align-items-center level-item is-clickable" id="pbox4">
                                     <img src="./assets/images/add_favorites.jpg">
                                 </div>
@@ -212,7 +275,7 @@
                                 </div>
                             </div>
                 
-                            <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="tile is-child is-vertical p-0 m-1" style="max-width:200px;">
                                 <div class="box is-align-items-center level-item is-clickable" id="pbox6">
                                     <img src="./assets/images/add_favorites.jpg">
                                 </div>
@@ -226,12 +289,12 @@
                     </div>
                     
                     <div class="column">
-                        <div class="container" id="personalMainImg"><img src="./assets/images/primaryFavorite.jpg"></div>
+                        <div class="container"><img src="./assets/images/primaryFavorite.jpg" style="max-width:325px;"  id="personalMainImg"></div>
                     </div>
                 </div>
             </div>
-            <div class="title m-0 has-text-centered" id="homeMiddle">
-                <div class="columns is-vcentered m-0"> <!-- mt-6 -->
+            <!-- <div class="title m-0 has-text-centered" id="homeMiddle">
+                <div class="columns is-vcentered m-0"> 
                     <div class="column m-0">
                         <p class="is-size-6"></p>
                     </div>
@@ -242,7 +305,7 @@
                         <p class="is-size-6"></p>
                     </div>
                 </div>
-            </div>
+            </div>  -->
         </section>
 
         <section id="top20Sec">

@@ -32,15 +32,24 @@ if(savedPosters != null){
     } 
 }
 
+//
+modal2
+$("#siteMapBtn").on("click", async function(event){
+    document.getElementById('modal2').classList.add(isVisible);
+});
+
 //Get movie details and posters
 $("#searchBtn").on("click", async function(event){
     event.stopPropagation();
+
+
 
     $("#movieTitle").empty
     $("#releaseYear").empty
     $("#moviePoster").attr('src', loadingImage);
     $("#moviePlot").empty
 
+    document.getElementById('modal1').classList.add(isVisible);
 
     if ($("#searchmovies").val()) {
         searchMovie = $("#searchmovies").val();
@@ -271,12 +280,9 @@ const openEls = document.querySelectorAll("[data-open]");
 const closeEls = document.querySelectorAll("[data-close]");
 const isVisible = "is-visible";
  
-for(const el of openEls) {
-  el.addEventListener("click", function() {
-    const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
-  });
-};
+// $("searchBtn").on("click", function() {
+    
+// });
 
 for (const el of closeEls) {
     console.log(el);
@@ -288,9 +294,33 @@ for (const el of closeEls) {
  
 document.addEventListener("keyup", e => {
   if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+    document.getElementById('para').classList.remove(isVisible);
   }
+  
 });
+
+//Hamburger menu
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+  
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+  
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+  
+      });
+    });
+  
+  });
 
 
 //Clear movie details and posters form home page
