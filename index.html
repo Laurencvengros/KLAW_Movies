@@ -16,16 +16,6 @@
             <div class="hero-head">
                 <nav class="navbar-card">
                     <div class="container.hero">
-                        <!-- <div class="navbar-brand al ">
-                            <div class="tile is-justify-content-center">
-                                    
-                            </div>
-                                <span class="navbar-burger" data-target="navbarMenuHeroB">
-                                <span id="homeBtn">Home</span>
-                                <span id="triviaBtn">Games</span>
-                                <span id="aboutBtn">About</span>        
-                                </span>
-                        </div> -->
 
                         <div class="navbar-brand navbar-start is-active mt-2">
                             <div class="tile is-justify-content-center">
@@ -61,9 +51,6 @@
         <section id="homeSec">
             <div class="title notification $grey-light mt-3 ml-3 mr-3 mb-3" id="homeMiddle">
                 <div class="columns">
-                    <!-- <div class="column m-0 p-0">
-
-                    </div> -->
                     <div class="column m-0 p-0">
                         <div class="control is-grouped">
                             <div class="tile is-justify-content-right m-0 p-0">
@@ -71,9 +58,9 @@
                                 <a class="button is-info open-modal" id="searchBtn" data-open="modal1">Search</a>                         
                             </div>
                             
-                            <div class="tile is-justify-content-right m-0 p-0">
-                                <label class="radio is-small">
-                                    <input type="radio" name="answer" id="imdbSearch" checked>
+                            <div class="control tile is-justify-content-right m-0 p-0">
+                                <label class="radio">
+                                    <input type="radio" name="answer" id="imdbSearch" checked="checked" aria-checked="true">
                                     IMDB
                                 </label>
                                 <label class="radio">
@@ -132,6 +119,7 @@
                         <br>
                         <!-- <button class="delete" aria-label="close" data-close></button> -->
                         <button id="favBtn">Add To Favorites</button>
+                        <p class="added" id="addedFav" style="display:none;color: green;font-size:larger;font-weight: 500;">Added To Favorites<i class="fa-solid fa-check"></i></p>
                     </header>
                     <section class="modal-card-body">
                             <div><img src="./assets/images/loading.gif" id="moviePoster" attr="Movie Title"></div>

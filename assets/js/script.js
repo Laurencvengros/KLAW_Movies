@@ -32,16 +32,24 @@ if(savedPosters != null){
     } 
 }
 
-//
-modal2
+//modal2 for Site Map
 $("#siteMapBtn").on("click", async function(event){
     document.getElementById('modal2').classList.add(isVisible);
 });
 
+//Case 0 is it doesn't display when the site loaded
+//Case 1 is user clicks on Add Favs and the Add button goes away and Added Favorite appears
+//Case 2 user search for the same movie and the Added Favorites appears but the button doesn't appear
+
+
+
 //Get movie details and posters
 $("#searchBtn").on("click", async function(event){
     event.stopPropagation();
+    var notSaved = false;
 
+    // $("#favBtn").show();
+    // $("#addedFav").hide();
 
 
     $("#movieTitle").empty
@@ -65,6 +73,8 @@ $("#searchBtn").on("click", async function(event){
             $("#selectVal").append("<option>"+$("#searchmovies").val()+"</option>");
 
         }
+
+
     }
     else if ($("#selectVal").val() != "Recent Searches"){
         searchMovie = $("#selectVal").val();
@@ -76,7 +86,6 @@ $("#searchBtn").on("click", async function(event){
     
     if (searchMovie) {
         // clearMovie();
-        $("#favBtn").show();
 
         if ($("input[type='radio']:checked").attr("id") === "imdbSearch"){
             getIMDBmovies();
@@ -96,6 +105,9 @@ $("#searchBtn").on("click", async function(event){
 //Add movies to the personalized page
 $("#favBtn").on("click", function(event){
     event.stopPropagation();
+
+    $("#favBtn").hide();
+    $("#addedFav").show();
 
     personal = { movieTitle: "", poster: "" };
     personal.movieTitle = moveTitleGlobal;
@@ -143,11 +155,13 @@ $("#favBtn").on("click", function(event){
 for (let i = 0; i < 8; i++) {
     $("#pbox" + i).on("click", function(event){
         event.stopPropagation();
-        // console.log(this.innerHTML);
-        // console.log(!this.innerHTML.includes("add_favorites.jpg"));
+        console.log(this.children[0])
+        console.log(this.children[0].getAttribute("src"));
+        console.log(!this.innerHTML.includes("add_favorites.jpg"));
+
         if (!this.innerHTML.includes("add_favorites.jpg")){
             personalMainImage.empty();
-            personalMainImage.append(this.innerHTML);
+            personalMainImage.attr('src', this.children[0].getAttribute("src"));
         }
     
     });
@@ -169,6 +183,27 @@ function getIMDBmovies(){
             var yearVal = data.results[0].description.split('(')[1].split('–')[0];
             var plotVal = data.results[0].plot;
             var ratingVal = data.results[0].imDbRating;
+            var notSaved = true;
+
+            for (let i = 0; i < favMovies.personalSaves.length; i++) {
+
+                console.log(titleVal);
+                console.log(favMovies.personalSaves[i].movieTitle);
+
+                if (titleVal === favMovies.personalSaves[i].movieTitle) {
+                    notSaved = false;
+                    break;
+                }
+            }
+        
+            if (notSaved){
+                $("#favBtn").show();
+                $("#addedFav").hide();
+            }
+            else {
+                $("#favBtn").hide();
+                $("#addedFav").show();
+            }
 
             $("#movieTitle").text(titleVal);
             $("#releaseYear").text(yearVal);
@@ -208,6 +243,27 @@ function getTMDBmovies(){
             var yearVal = data.results[0].release_date.split('-')[0];
             var plotVal = data.results[0].overview;
             var ratingVal = data.results[0].vote_average;
+            var notSaved = true;
+
+            for (let i = 0; i < favMovies.personalSaves.length; i++) {
+
+                console.log(titleVal);
+                console.log(favMovies.personalSaves[i].movieTitle);
+
+                if (titleVal === favMovies.personalSaves[i].movieTitle) {
+                    notSaved = false;
+                    break;
+                }
+            }
+        
+            if (notSaved){
+                $("#favBtn").show();
+                $("#addedFav").hide();
+            }
+            else {
+                $("#favBtn").hide();
+                $("#addedFav").show();
+            }
 
             $("#movieTitle").text(titleVal);
             $("#releaseYear").text(yearVal);
@@ -251,6 +307,27 @@ function getOMDBmovies(){
         var yearVal = data.Year;
         var plotVal = data.Plot;
         var ratingVal = data.imdbRating;
+        var notSaved = true;
+
+        for (let i = 0; i < favMovies.personalSaves.length; i++) {
+
+            console.log(titleVal);
+            console.log(favMovies.personalSaves[i].movieTitle);
+
+            if (titleVal === favMovies.personalSaves[i].movieTitle) {
+                notSaved = false;
+                break;
+            }
+        }
+    
+        if (notSaved){
+            $("#favBtn").show();
+            $("#addedFav").hide();
+        }
+        else {
+            $("#favBtn").hide();
+            $("#addedFav").show();
+        }
 
         $("#movieTitle").text(titleVal);
         $("#releaseYear").text(yearVal);
@@ -388,7 +465,13 @@ $("#triviaBtn").on("click", function(){
 
 $("#poster1").on("click", function(){
     // clearMovie()
-    $("#favBtn").show();
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie="Spirited Away";
     getTMDBmovies()
     // getMovie(searchMovie);
@@ -396,7 +479,13 @@ $("#poster1").on("click", function(){
 
 $("#poster2").on("click", function(){
     // clearMovie()
-    $("#favBtn").show();
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie="Independence Day";
     getTMDBmovies()
     // getMovie(searchMovie);
@@ -404,7 +493,13 @@ $("#poster2").on("click", function(){
 
 $("#poster3").on("click", function(){
     // clearMovie()
-    $("#favBtn").show();
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie="Insidious";
     getTMDBmovies()
     // getMovie(searchMovie);
@@ -412,7 +507,13 @@ $("#poster3").on("click", function(){
 
 $("#poster4").on("click", function(){
     // clearMovie()
-    $("#favBtn").show();
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie="The Devil Wears Prada";
     getTMDBmovies()
     // getMovie(searchMovie);
@@ -420,7 +521,13 @@ $("#poster4").on("click", function(){
 
 $("#poster5").on("click", function(){
     // clearMovie()
-    $("#favBtn").show();
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie="The English Patient";
     getTMDBmovies()
     // getMovie(searchMovie);
