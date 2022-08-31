@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>KLAW Movies</title> 
 </head>
 <body>
@@ -57,7 +58,7 @@
 </section>
 <section id="homeSec">
     <div class="container">
-        <div class="columns is-vcentered mt-6">
+        <div class="columns is-vcentered"> <!-- mt-6 -->
             <div class="column is-two-thirds">
                 <p class="title">
                     KLAW MOVIES
@@ -70,16 +71,40 @@
                 <div class="field has-addons">
                     <div class="control is-expanded">
                         <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
-                        <!-- Error Message Upon Empty Search -->
-                        <span id="errorMessage">   
-                        </span>
+                        
+                        <label class="radio">
+                            <input type="radio" name="answer" id="imdbSearch" checked>
+                            IMDB
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer" id="omdbSearch">
+                            OMDB
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer" id="tmdbSearch">
+                            TMDB
+                        </label>
                     </div>
                     <div class="control">
                         <a class="button is-info" id="searchBtn">
                             Search
                         </a> 
                     </div>
+                    <!-- Error Message Upon Empty Search -->
+                    
+                    
+                
                 </div>
+
+                <div class="control">
+                    <!-- <label>Recent Searches:</label> -->
+                    <div class="select">
+                        <select id="selectVal">
+                        <option>Recent Searches</option>
+                        </select>
+                    </div>
+                </div>
+                <span id="errorMessage"><h5></h5></span>
             </div>
         </div>
     </div>
@@ -92,6 +117,7 @@
                     <img class = "display-poster" id="poster2" src="./assets/images/independence_day_poster.jpg" alt="Independence Day poster">
                     <img class = "display-poster" id="poster3" src="./assets/images/insidious_poster.jpg" alt="Insideous poster">
                     <h2 id="movie-title"></h2>
+                    <button id="favBtn">Add To Favorites</button>
                     <div id="movie-poster"></div>
                     <div id="movie-data"></div>
                     </div>
@@ -134,19 +160,62 @@
 </section>
 <section id="personalizeSec">
     <div class="container">
+        <p class="title">
+            Personalize Page
+        </p>
+        <p class="subtitle is-5">
+            Create your favorites list using the search function
+        </p>
         <div class="columns is-vcentered mt-6">
             <div class="column is-two-thirds">
-                <p class="title">
-                    Personalize Page
-                </p>
-                <p class="subtitle is-5">
-                    Create your favorites list using the search function
-                </p>
+                
+                <!-- <ul id ="favorites"></ul> -->
+                <div class="tile is-ancestor p-1 is-align-items-center level-item">
+
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox0">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox1">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                        
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox2">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox3">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+            
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox4">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox5">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                
+                        </div>
+            
+                        <div class="tile is-parent is-vertical p-0 m-1" style="max-width:225px;">
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox6">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                            <div class="box is-align-items-center level-item is-clickable" id="pbox7">
+                                <img src="./assets/images/gray.jpg">
+                            </div>
+                        </div>
+                </div>
+                
             </div>
             <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                </p>
+                <div class="container" id="personalMainImg">
+                    <img src="./assets/images/gray.jpg">
                 </div>
             </div>
         </div>
@@ -165,152 +234,153 @@
     </div>
 </section>
 <section id="top20Sec">
-  <div class="container">
-    <div class="columns is-vcentered mt-6">
-      <div class="column is-two-thirds">
-        <p class="title">
-          Here are our top 20
-        </p>
-        <p class="subtitle is-5">
-          See what we choose
-        </p>
+    <div class="container">
+      <div class="columns is-vcentered mt-6">
+        <div class="column is-two-thirds">
+          <p class="title">
+            Here are our top 20
+          </p>
+          <p class="subtitle is-5">
+            See what we choose
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="columns">
-    <div class="column" id="kelsieFavs">
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>See Kelsie's Top 5 Movies</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item" id="kelsie1">
-              Uptown Girls
-            </a>
-            <a class="dropdown-item" id="kelsie2">
-              Ella Enchanted
-            </a>
-            <a class="dropdown-item" id="kelsie3">
-              New York Minute
-            </a>
-            <a class="dropdown-item" id="kelsie4">
-              The Lorax
-            </a>
-            <a class="dropdown-item" id="kelsie5">
-              The Social Network
-            </a>
+    <div class="columns">
+      <div class="column" id="kelsieFavs">
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>See Kelsie's Top 5 Movies</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
           </div>
-        </div> 
-      </div>
-    </div>
-    <div class="column" id="laurenFavs">
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>See Lauren's Top 5 Movies</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" id="kelsie1">
+                Uptown Girls
+              </a>
+              <a class="dropdown-item" id="kelsie2">
+                Ella Enchanted
+              </a>
+              <a class="dropdown-item" id="kelsie3">
+                New York Minute
+              </a>
+              <a class="dropdown-item" id="kelsie4">
+                The Lorax
+              </a>
+              <a class="dropdown-item" id="kelsie5">
+                The Social Network
+              </a>
+            </div>
+          </div> 
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item" id="lauren1">
-              Spirited Away
-            </a>
-            <a class="dropdown-item" id="lauren2">
-              My Neighbor Totoro
-            </a>
-            <a class="dropdown-item" id="lauren3">
-              Your name
-            </a>
-            <a class="dropdown-item" id="lauren4">
-              Sinister
-            </a>
-            <a class="dropdown-item" id="lauren5">
-              As Above So Below
-            </a>
+      </div>
+      <div class="column" id="laurenFavs">
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>See Lauren's Top 5 Movies</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="column" id="drewFavs">
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>See Andrew's Top 5 Movies</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item" id="drew1">
-              Hitch
-            </a>
-            <a class="dropdown-item" id="drew2">
-              The Secret Life of Walter Mitty
-            </a>
-            <a class="dropdown-item" id="drew3">
-              The Green Mile
-            </a>
-            <a class="dropdown-item" id="drew4">
-              Treasure Planet
-            </a>
-            <a class="dropdown-item" id="drew5">
-              Guardians fo the Galaxy Vol. 2
-            </a>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" id="lauren1">
+                Spirited Away
+              </a>
+              <a class="dropdown-item" id="lauren2">
+                My Neighbor Totoro
+              </a>
+              <a class="dropdown-item" id="lauren3">
+                Your name
+              </a>
+              <a class="dropdown-item" id="lauren4">
+                Sinister
+              </a>
+              <a class="dropdown-item" id="lauren5">
+                As Above So Below
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="column" id="willFavs">
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>See Will's Top 5 Movies</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+      <div class="column" id="drewFavs">
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>See Andrew's Top 5 Movies</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" id="drew1">
+                Hitch
+              </a>
+              <a class="dropdown-item" id="drew2">
+                The Secret Life of Walter Mitty
+              </a>
+              <a class="dropdown-item" id="drew3">
+                The Green Mile
+              </a>
+              <a class="dropdown-item" id="drew4">
+                Treasure Planet
+              </a>
+              <a class="dropdown-item" id="drew5">
+                Guardians fo the Galaxy Vol. 2
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item" id="will1">
-              Back to the Future II
-            </a>
-            <a class="dropdown-item" id="will2">
-              Terminator II
-            </a>
-            <a class="dropdown-item" id="will3">
-              Forest Gump
-            </a>
-            <a class="dropdown-item" id="will4">
-              Memento
-            </a>
-            <a class="dropdown-item" id="will5">
-              Black Panther            
-            </a>
+      </div>
+      <div class="column" id="willFavs">
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>See Will's Top 5 Movies</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" id="will1">
+                Back to the Future II
+              </a>
+              <a class="dropdown-item" id="will2">
+                Terminator II
+              </a>
+              <a class="dropdown-item" id="will3">
+                Forest Gump
+              </a>
+              <a class="dropdown-item" id="will4">
+                Memento
+              </a>
+              <a class="dropdown-item" id="will5">
+                Black Panther            
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="notification $grey-light"  id="displayFav">
-      <div class="columns">
+      <div class="columns is-mobile is-centered">
         <div class="column"> 
           <div class="column poster">
-            <h2 id="movie-title"></h2>
+            <h2 id="favorite-title"></h2>
+            <div id="favorite-poster"></div>
+            <div id="favorite-data"></div>
             <button id="favBack">Back to lists</button>
-            <div id="movie-poster"></div>
-            <div id="movie-data"></div>
-          </div>
+          </div>  
         </div>
       </div>
     </div>   
