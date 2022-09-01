@@ -9,7 +9,7 @@
 
 https://laurencvengros.github.io/KLAW_Movies/
 
-## Usear Story
+## User Story
 
 ```
 AS a user
@@ -34,6 +34,11 @@ SO THAT I can get information on the movie
 * IF you would like to try some movie trivia,
     THEN click the "trivia" tab to choose a fun game to play.
 
+* Search data comes from the following three APIs
+    IMDB : https://developer.imdb.com/
+    TMDB : https://www.themoviedb.org/?language=en-US
+    OMDB : https://www.omdbapi.com/
+
 # ScreenShots of the Website
 
 ![Home-screen](./assets/images/Homepage_Screenshot.jpg "Screenshot of app homepage.")
@@ -47,3 +52,13 @@ SO THAT I can get information on the movie
 ![SiteMap-Page](./assets/images/sitemap_page.jpg "Screenshot of app site map.")
 
 ![AboutUs-Page](./assets/images/aboutus_page.jpg "Screenshot of about us section.")
+
+# Collaborators 
+
+* Kelsie Szost: https://github.com/kelsieszost
+
+* Will Winston: https://github.com/win-will
+
+* Andrew Vasquez: https://github.com/drewrvaz
+
+* Lauren Cvengros: https://github.com/Laurencvengros
