@@ -401,14 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //Clear movie details and posters form home page
-function clearMovie(){
-    $("#movie-title").empty();
-    $("#movie-poster").empty();
-    $("#movie-data").empty();
-}
+// function clearMovie(){
+//     $("#movie-title").empty();
+//     $("#movie-poster").empty();
+//     $("#movie-data").empty();
+// }
 
 
 $("#homeSec").show();
+$("#searchBar").show();
 $("#aboutSec").hide();
 $("#personalizeSec").hide();
 $("#top20Sec").hide();
@@ -417,6 +418,7 @@ $("#triviaSec").hide();
 
 $("#homeBtn").on("click", function(){
     $("#homeSec").show();
+    $("#searchBar").show();
     $("#aboutSec").hide();
     $("#personalizeSec").hide();
     $("#top20Sec").hide();
@@ -433,6 +435,7 @@ $("#aboutBtn").on("click", function(){
     $("#personalizeSec").hide();
     $("#top20Sec").hide();
     $("#triviaSec").hide();
+    $("#searchBar").hide();
 
 });
 
@@ -442,6 +445,7 @@ $("#personalizeBtn").on("click", function(){
     $("#personalizeSec").show();
     $("#top20Sec").hide();
     $("#triviaSec").hide();
+    $("#searchBar").show();
 
 });
 
@@ -451,6 +455,7 @@ $("#top20Btn").on("click", function(){
     $("#personalizeSec").hide();
     $("#top20Sec").show();
     $("#triviaSec").hide();
+    $("#searchBar").hide();
 
 });
 
@@ -460,6 +465,7 @@ $("#triviaBtn").on("click", function(){
     $("#personalizeSec").hide();
     $("#top20Sec").hide();
     $("#triviaSec").show();
+    $("#searchBar").hide();
 
 });
 
@@ -550,34 +556,39 @@ function favoriteMoviesTMDB(){
             var yearVal = data.results[0].release_date;
             var plotVal = data.results[0].overview;
             var ratingVal = data.results[0].vote_average;
-            
-            var TitleHeader = $("<h6>");
-            var TextDiv = $("<div>");
-            var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-            var summaryTab =$("<p>").text("Summary: ");
-            var plotEl = $("<p>").text( plotVal);
-            var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
-            var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
+            var notSaved = true;
 
-            TitleHeader.append(titleEl);
-            TextDiv.append(summaryTab);
-            TextDiv.append(plotEl);
-            $("#favorite-data").append(TextDiv);
-            $("#favorite-title").append(TitleHeader);
+            for (let i = 0; i < favMovies.personalSaves.length; i++) {
 
-            // var card = $("<div class='card'>")
-            var TextDiv = $("<div>")
-            imgEl=$("<img>").attr('src', poster).css('height', '500px');
-            TextDiv.append(imgEl)
-            // card.append(TextDiv);
+                console.log(titleVal);
+                console.log(favMovies.personalSaves[i].movieTitle);
 
-            $("#favorite-poster").append(TextDiv);
-
-            if (ratingVal > 8){
-                TextDiv.prepend(highRating);
+                if (titleVal === favMovies.personalSaves[i].movieTitle) {
+                    notSaved = false;
+                    break;
+                }
+            }
+        
+            if (notSaved){
+                $("#favBtn").show();
+                $("#addedFav").hide();
             }
             else {
-                TextDiv.prepend(ratingEl);
+                $("#favBtn").hide();
+                $("#addedFav").show();
+            }
+
+            $("#movieTitle").text(titleVal);
+            $("#releaseYear").text(yearVal);
+            $("#moviePoster").attr('src', poster);
+            $("#moviePlot").text("Summary: " + plotVal);
+
+
+            if (ratingVal > 8){
+                $("#ratingEl").text("IMDB Rating: " + ratingVal);
+            }
+            else {
+                $("#ratingEl").text("IMDB Rating: " + ratingVal + " (Highly Rated!)");
             }
             
             posterGlobal = poster;
@@ -605,39 +616,43 @@ function favoriteMoviesIMDB(){
             var yearVal = data.results[0].description;
             var plotVal = data.results[0].plot;
             var ratingVal = data.results[0].imDbRating;
-            
-            var TitleHeader = $("<h6>");
-            var TextDiv = $("<div>");
-            var titleEl = $("<p>").text(titleVal + " " + "(" + yearVal + ")");
-            var summaryTab =$("<p>").text("Summary: ");
-            var plotEl = $("<p>").text( plotVal);
-            var ratingEl = $("<p>").text("IMDB Rating: " + ratingVal);
-            var highRating =$("<p>").text("IMDB Rating: " + ratingVal + " " + " (Highly Rated!)");
+            var notSaved = true;
 
-            TitleHeader.append(titleEl);
-            TextDiv.append(summaryTab);
-            TextDiv.append(plotEl);
-            $("#favorite-data").append(TextDiv);
-            $("#favorite-title").append(TitleHeader);
+            for (let i = 0; i < favMovies.personalSaves.length; i++) {
 
-            // var card = $("<div class='card'>")
-            var TextDiv = $("<div>")
-            imgEl=$("<img>").attr('src', poster).css('height', '500px');
-            TextDiv.append(imgEl)
-            // card.append(TextDiv);
+                console.log(titleVal);
+                console.log(favMovies.personalSaves[i].movieTitle);
 
-            $("#favorite-poster").append(TextDiv);
-
-            if (ratingVal > 8){
-                TextDiv.prepend(highRating);
+                if (titleVal === favMovies.personalSaves[i].movieTitle) {
+                    notSaved = false;
+                    break;
+                }
+            }
+        
+            if (notSaved){
+                $("#favBtn").show();
+                $("#addedFav").hide();
             }
             else {
-                TextDiv.prepend(ratingEl);
+                $("#favBtn").hide();
+                $("#addedFav").show();
+            }
+
+            $("#movieTitle").text(titleVal);
+            $("#releaseYear").text(yearVal);
+            $("#moviePoster").attr('src', poster);
+            $("#moviePlot").text("Summary: " + plotVal);
+
+
+            if (ratingVal > 8){
+                $("#ratingEl").text("IMDB Rating: " + ratingVal);
+            }
+            else {
+                $("#ratingEl").text("IMDB Rating: " + ratingVal + " (Highly Rated!)");
             }
             
             posterGlobal = poster;
             moveTitleGlobal = titleVal;
-            console.log(moveTitleGlobal + " " + posterGlobal);
 
            
             return true;
@@ -646,11 +661,11 @@ function favoriteMoviesIMDB(){
     return true;
 };
 
-function clearFavorite(){
-    $("#favorite-title").empty();
-    $("#favorite-poster").empty();
-    $("#favorite-data").empty();
-}
+// function clearFavorite(){
+//     $("#favorite-title").empty();
+//     $("#favorite-poster").empty();
+//     $("#favorite-data").empty();
+// }
 
 $("#top20Btn").on("click", function(){
     $("#homeSec").hide();
@@ -663,233 +678,660 @@ $("#top20Btn").on("click", function(){
 });
 
 $("#kelsie1").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Uptown Girls";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#kelsie2").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Ella Enchanted";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#kelsie3").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "New York Minute";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#kelsie4").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "The Lorax";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#kelsie5").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "The Social Network";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#lauren1").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Spirited Away";
     favoriteMoviesIMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#lauren2").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "My Neighbor Totoro";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#lauren3").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Your Name";
     favoriteMoviesIMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#lauren4").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Sinister";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#lauren5").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "As Above So Below";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#drew1").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Hitch";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#drew2").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "The Secret Life of Walter Mitty";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#drew3").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "The Green Mile";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#drew4").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Treasure Planet";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#drew5").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Guardians of the Galaxy Vol. 2";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#will1").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Back to the Future Part II";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#will2").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Terminator 2";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#will3").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Forest Gump";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#will4").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Memento";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
 });
 
 $("#will5").on("click", function(){
-    clearFavorite();
+    // clearFavorite();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
     searchMovie = "Black Panther";
     favoriteMoviesTMDB(searchMovie);
-    $("#kelsieFavs").hide();
-    $("#laurenFavs").hide();
-    $("#drewFavs").hide();
-    $("#willFavs").hide();
-    $("#displayFav").show();
+
 });
 
-$("#favBack").on("click", function() {
-    clearFavorite();
-    $("#kelsieFavs").show();
-    $("#laurenFavs").show();
-    $("#drewFavs").show();
-    $("#willFavs").show();
-    $("#displayFav").hide();
+$("#poster6").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="Ella Enchanted";
+    getTMDBmovies()
+    // getMovie(searchMovie);
 });
+
+$("#poster7").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="My Neighbor Totoro";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster8").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="The Secret Life of Walter Mitty";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster9").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="Terminator 2 Judgement Day";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+
+// $("#favBack").on("click", function() {
+//     clearFavorite();
+//     $("#kelsieFavs").show();
+//     $("#laurenFavs").show();
+//     $("#drewFavs").show();
+//     $("#willFavs").show();
+//     $("#displayFav").hide();
+// });
+
+// var dropdown = [];
+// var ids = ["kelsieDropDown","laurenDropDown","drewDropDown","willDropDown"];
+
+var dropdown1 = document.getElementById('kelsieDropDown');
+var dropdown2 = document.getElementById('laurenDropDown');
+var dropdown3 = document.getElementById('drewDropDown');
+var dropdown4 = document.getElementById('willDropDown');
+var dropdown5 = document.getElementById('gamesDropDown');
+
+dropdown1.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown1.classList.toggle('is-active');
+});
+
+dropdown2.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown2.classList.toggle('is-active');
+});
+
+dropdown3.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown3.classList.toggle('is-active');
+});
+
+dropdown4.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown4.classList.toggle('is-active');
+});
+
+dropdown5.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown5.classList.toggle('is-active');
+});
+
+$("#selectMatching").on("click", function(){
+    // clearFavorite();
+    // $("#movieTitle").empty
+    // $("#releaseYear").empty
+    // $("#moviePoster").attr('src', loadingImage);
+    // $("#moviePlot").empty
+
+    // document.getElementById('modal1').classList.add(isVisible);
+    // searchMovie = "Black Panther";
+    // favoriteMoviesTMDB(searchMovie);
+    $("#gamesMiddleMovies").hide();
+    $("#guessingGame").hide();
+    $("#triviaGame").hide();
+    $("#matchingGame").show();
+
+});
+
+$("#selectGuessing").on("click", function(){
+    // clearFavorite();
+    // $("#movieTitle").empty
+    // $("#releaseYear").empty
+    // $("#moviePoster").attr('src', loadingImage);
+    // $("#moviePlot").empty
+
+    // document.getElementById('modal1').classList.add(isVisible);
+    // searchMovie = "Black Panther";
+    // favoriteMoviesTMDB(searchMovie);
+    $("#gamesMiddleMovies").hide();
+    $("#guessingGame").show();
+    $("#triviaGame").hide();
+    $("#matchingGame").hide();
+
+});
+
+$("#selectTrivia").on("click", function(){
+    // clearFavorite();
+    // $("#movieTitle").empty
+    // $("#releaseYear").empty
+    // $("#moviePoster").attr('src', loadingImage);
+    // $("#moviePlot").empty
+
+    // document.getElementById('modal1').classList.add(isVisible);
+    // searchMovie = "Black Panther";
+    // favoriteMoviesTMDB(searchMovie);
+    $("#gamesMiddleMovies").hide();
+    $("#guessingGame").hide();
+    $("#triviaGame").show();
+    $("#matchingGame").hide();
+
+});
+
+
+//Matching Game
+
+var cards = [
+    {
+        src: "./assets/images/matchPosters/beverly_hills_cop_3.jpg",
+        id: "1"
+    },
+    {
+        src: "./assets/images/matchPosters/1994.jpg",
+        id: "1"
+    },
+    {
+        src: "./assets/images/matchPosters/true_romance.jpg",
+        id: "2"
+    },
+
+    {
+        src: "./assets/images/matchPosters/1993.jpg",
+        id: "2"
+    },
+    {
+        src: "./assets/images/matchPosters/predator_2.jpg",
+        id: "3"
+    },
+    {
+        src: "./assets/images/matchPosters/1990.jpg",
+        id: "3"
+    },
+
+    {
+        src: "./assets/images/matchPosters/back_to_the_future_2.jpg",
+        id: "4"
+    },
+    {
+        src: "./assets/images/matchPosters/1989.jpg",
+        id: "4"
+    },
+    {
+        src: "./assets/images/matchPosters/oceans_eleven.jpg",
+        id: "5"
+    },
+    {
+        src: "./assets/images/matchPosters/2001.jpg",
+        id: "5"
+    }
+];
+
+// console.log(cards);
+
+cards = shuffleArray(cards);
+var imgHtmlhidden = `<img style="max-width:75%;" src="./assets/images/matchPosters/hiddenCard.png">`
+var activated = [];
+
+for (let i = 0; i < 10; i++){
+    activated.push(false);
+    $("#matchBtn" + i).append(imgHtmlhidden);
+
+}
+
+firstCardIndex = null;
+
+for (let i = 0; i < 10; i++){
+
+    $("#matchBtn" + i).on("click", async function(){  
+        if (!activated[i]) {
+            var imgHtml = `<img style="max-width:75%;" src="` + cards[i].src + `">`
+            $("#matchBtn" + i).empty();
+            $("#matchBtn" + i).append(imgHtml);
+
+            if (firstCardIndex != null){
+
+                if (cards[i].id === cards[firstCardIndex].id){
+                    activated[i] = true;
+                    activated[firstCardIndex] = true;
+                }
+                else {
+                    await sleep(1000);
+                    $("#matchBtn" + i).empty();
+                    $("#matchBtn" + i).append(imgHtmlhidden);
+                    $("#matchBtn" + firstCardIndex).empty();
+                    $("#matchBtn" + firstCardIndex).append(imgHtmlhidden);
+                }
+
+                firstCardIndex = null;
+            }
+            else {
+
+                firstCardIndex = i;
+            }
+        }
+    
+    });
+}
+
+$("#resetMatchBtn").on("click", function(){
+    cards = shuffleArray(cards);
+    activated = [];
+
+    for(i=0; i < cards.length;i++){
+        activated.push(false);
+        $("#matchBtn" + i).empty();
+        $("#matchBtn" + i).append(imgHtmlhidden);
+    }
+});
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}           
+
+function shuffleArray(arr) {
+    arr.sort(() => Math.random() - 0.5);
+    return arr;
+}
+
+//Guessing
+var matchTitle = "INCEPTION"
+var printTitle = ""
+
+for (let i = 0; i < matchTitle.length;i++){
+
+    printTitle = printTitle + "_";
+}
+
+$("#matchTitle").text(printTitle);
+
+$(document).keydown(function(event) {
+
+    // alert('You pressed down a key ' + );
+    if (matchTitle.includes(String.fromCharCode(event.which))){
+        
+
+        for (let i = 0; i < matchTitle.length; i++) {
+            
+            if (matchTitle[i] === String.fromCharCode(event.which)){
+                console.log(matchTitle[i] + " = " + String.fromCharCode(event.which))
+                printTitle = replaceChar(printTitle, i, String.fromCharCode(event.which))
+            //     console.log(printTitle[i] = );
+            }
+        
+        }
+        
+        $("#matchTitle").text(printTitle);
+
+    }
+    else {
+
+        console.log(String.fromCharCode(event.which));
+
+    }
+    
+
+});
+
+function replaceChar(str, index, replacement) {
+    if (index >= str.length) {
+        return str.valueOf();
+    }
+ 
+    var chars = str.split('');
+    chars[index] = replacement;
+    return chars.join('');
+}
+
+function loadBackdrops() {
+
+    var posters = "https://api.themoviedb.org/3/movie/27205/similar?api_key=ae8cbfc11d012e219d3b44e276a96f51&language=en-US&page=1";
+}
+
+$("#poster10").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="The English Patient";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster11").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="The English Patient";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster12").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="New York Minute";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster13").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="Your Name";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster5").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="The Green Mile";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+$("#poster5").on("click", function(){
+    // clearMovie()
+    // $("#favBtn").show();
+    $("#movieTitle").empty
+    $("#releaseYear").empty
+    $("#moviePoster").attr('src', loadingImage);
+    $("#moviePlot").empty
+
+    document.getElementById('modal1').classList.add(isVisible);
+    searchMovie="Forrest Gump";
+    getTMDBmovies()
+    // getMovie(searchMovie);
+});
+
+
+// console.log(dropdown);
+// for (var i = 0; i < 4; i++) {
+//     dropdown.push(document.getElementById(ids[i]));
+// }
+
+// dropdown.addEventListener('click', function(event) {
+//   event.stopPropagation();
+//   dropdown.classList.toggle('is-active');
+// });
 
 // var startQuiz = document.querySelector("#startTriviaQuiz");
 // var startQuizBtn = document.querySelector("#startGameTrivia");
