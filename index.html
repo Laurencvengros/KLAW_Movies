@@ -603,6 +603,50 @@
           </div>
         </div>
 
+        <div class="container" style="display:none" id="quizPage">
+            <div class="box mt-6">
+              <div class="notification is-info">
+                <div class="title is-flex-direction-column is-justify-content-center" id="triviaColumns">
+                        <h2 class="subtitle is-3 mt-4 has-text-centered" id="questionList"></h2>
+
+                        <div id="answerBox">
+                            <div id="imgList">
+                              <a class="container level-item m-1" href="javascript:nextImage('mainImg')"><img src=""style="" id="movieImageOne" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="container level-item">
+                          <button class="button is-outlined m-1" id="A"></button>
+                          <button class="button is-outlined m-1" id="B"></button>
+                          <button class="button is-outlined m-1" id="C"></button>
+                          <button class="button is-outlined m-1" id="D"></button>
+                        </div>
+                        <div class="has-text-centered is-size-6" id="rightwrong"></div>
+                    </div>
+                  </div>
+                </div>       
+          </div>
+        </div>
+
+        <div class="container" style="display: none;" id="endGame">
+          <div class="box mt-6">
+              <div class="notification is-info">
+                  <div id="finalscore">
+                  </div>
+                      <h2 class="subtitle is-3 mt-4" id="scorepage">
+                      You finished the quiz!
+                      </h2>
+                  <div class="scores" id="score">
+                      <h2 class="subtitle is-3" id="yourScore"></h2>
+                  </div>
+                  <div class="buttons mt-6">
+                      <button class="button restartQuiz" id="restartQuiz">Restart</button>
+                      <button class="button endGameQuiz" id="endQuiz">End Game</button>
+                  </div>
+              </div>
+          </div>
+       </div>
+    
+
         <div class="container-poster notification $grey-light p-1 m-3" style="display:none" id="triviaGame">
           <div class="tile is-justify-content-center">
               <div class="columns is-vcentered">
@@ -616,30 +660,6 @@
           </div>
         </div>
 
-            <!-- <div class="container">
-                <div class="columns is-vcentered mt-6">
-                    <div class="column is-two-thirds">
-                        <p class="title">Here is a fun trivia game</p>
-                        <p class="subtitle is-5">Select your options and start the game</p>
-                    </div>
-                    <div class="column">
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem perferendis consequatur labore tempora dolorum rem amet hic minus dignissimos. Doloremque enim molestias aut facere quas dignissimos odio, reiciendis pariatur dolorem blanditiis nostrum amet adipisci nemo ipsum nobis at excepturi facilis labore esse nihil sequi. Deserunt tempora id iusto tempore velit.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="container-poster">
-                <div class="notification $grey-light">
-                    <div class="columns">
-                        <div class="column"> 
-                            <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis perferendis qui totam. Nisi consequatur pariatur exercitationem, quae adipisci recusandae obcaecati ab quo tempora harum, aliquid facere veritatis accusamus blanditiis.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </section>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -647,6 +667,5 @@
 </body>
 <footer class="has-background-info has-text-white has-text-centered">
     <p>The source code is licensed by the team at KLAW Movies Apps.  You can learn more about this project and others at our github page.</p>      
-    <!-- <a class="button is-light is-small"><span class="icon"><i class="fab fa-github"></i></span></a> -->
 </footer>
 </html>

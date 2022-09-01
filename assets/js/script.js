@@ -1064,8 +1064,9 @@ $("#selectTrivia").on("click", function(){
     // favoriteMoviesTMDB(searchMovie);
     $("#gamesMiddleMovies").hide();
     $("#guessingGame").hide();
-    $("#triviaGame").show();
+    $("#quizPage").show();
     $("#matchingGame").hide();
+    startGame();
 
 });
 
@@ -1217,10 +1218,8 @@ $(document).keydown(function(event) {
     else {
 
         console.log(String.fromCharCode(event.which));
-
     }
     
-
 });
 
 function replaceChar(str, index, replacement) {
@@ -1294,234 +1293,189 @@ $("#poster13").on("click", function(){
     // getMovie(searchMovie);
 });
 
-$("#poster5").on("click", function(){
-    // clearMovie()
-    // $("#favBtn").show();
-    $("#movieTitle").empty
-    $("#releaseYear").empty
-    $("#moviePoster").attr('src', loadingImage);
-    $("#moviePlot").empty
 
-    document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="The Green Mile";
-    getTMDBmovies()
-    // getMovie(searchMovie);
+//Trivia Game 
+var startQuiz = document.querySelector("#startTriviaQuiz");
+var startQuizBtn = document.querySelector("#startGameTrivia");
+var quizPage = document.querySelector("#quizPage");
+var questionList = document.querySelector("#questionList");
+var buttonA = document.querySelector("#A");
+var buttonB = document.querySelector("#B");
+var buttonC = document.querySelector("#C");
+var buttonD = document.querySelector("#D");
+var endGame = document.querySelector("#endGame");
+var answerChoice = document.querySelector("#rightwrong");
+var yourScore = document.querySelector("#yourScore");
+var finalScore = document.querySelector("#finalscore");
+var restartQuizBtn = document.querySelector("#restartQuiz");
+var endQuizBtn = document.querySelector("#endQuiz");
+
+var myImage = document.getElementById("#movieImageOne");
+var questionIndex = 0;
+var imageIndex = 1;
+var correctAnswer;
+var score = 0;
+var text = document.createElement("text");
+
+var imageArray = [
+    './assets/images/rent.png',
+    './assets/images/brothersGrimm.png',
+    './assets/images/it.png',
+    './assets/images/schindlersList.png',
+    './assets/images/halfBloodPrince.png'
+];
+
+ function showImage()  {
+    $("#movieImageOne").attr("src", imageArray[questionIndex]);
+
+ }
+
+var answersI = 0;
+var answers = ["A","B","C","D"];
+
+$("#A").on("click", function () {
+    checkAnswer("A");
 });
 
-$("#poster5").on("click", function(){
-    // clearMovie()
-    // $("#favBtn").show();
-    $("#movieTitle").empty
-    $("#releaseYear").empty
-    $("#moviePoster").attr('src', loadingImage);
-    $("#moviePlot").empty
-
-    document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="Forrest Gump";
-    getTMDBmovies()
-    // getMovie(searchMovie);
+$("#B").on("click", function () {
+    checkAnswer("B");
 });
 
+$("#C").on("click", function () {
+    checkAnswer("C");
+});
 
-// console.log(dropdown);
-// for (var i = 0; i < 4; i++) {
-//     dropdown.push(document.getElementById(ids[i]));
-// }
-
-// dropdown.addEventListener('click', function(event) {
-//   event.stopPropagation();
-//   dropdown.classList.toggle('is-active');
-// });
-
-// var startQuiz = document.querySelector("#startTriviaQuiz");
-// var startQuizBtn = document.querySelector("#startGameTrivia");
-// var quizPage = document.querySelector("#quizPage");
-// var questionList = document.querySelector("#questionList");
-// var buttonA = document.querySelector("#A");
-// var buttonB = document.querySelector("#B");
-// var buttonC = document.querySelector("#C");
-// var buttonD = document.querySelector("#D");
-// var endGame = document.querySelector("#endGame");
-// var answerChoice = document.querySelector("#rightwrong");
-// var yourScore = document.querySelector("#yourScore");
-// var finalScore = document.querySelector("#finalscore");
-// var restartQuizBtn = document.querySelector("#restartQuiz");
-// var endQuizBtn = document.querySelector("#endQuiz");
-
-
-// var myImage = document.getElementById("#movieImageOne");
-// var questionIndex = 0;
-// var imageIndex = 1;
-// var correctAnswer;
-// var score = 0;
-// var text = document.createElement("text");
-
-// var imageArray = ['./assets/images/rent.png',
-//  './assets/images/brothersGrimm.png',
-//  './assets/images/it.png',
-//  './assets/images/schindlersList.png',
-//  './assets/images/halfBloodPrince.png'];
-
-//  function showImage()  {
-//     $("#movieImageOne").attr("src", imageArray[questionIndex]);
-
-//  }
-
-// var answersI = 0;
-// var answers = ["A","B","C","D"];
-
-// $("#A").on("click", function () {
-//     checkAnswer("A");
-// });
-
-// $("#B").on("click", function () {
-//     checkAnswer("B");
-// });
-
-// $("#C").on("click", function () {
-//     checkAnswer("C");
-// });
-
-// $("#D").on("click", function () {
-//     checkAnswer("D");
-// });
+$("#D").on("click", function () {
+    checkAnswer("D");
+});
 
     
-// var quizQuestions = [
-//     {
-//         question: "What is the title of this movie?",
+var quizQuestions = [
+    {
+        question: "What is the title of this movie?",
 
-//         A: "My Girl",
-//         B: "Rent",
-//         C: "The Perfect Storm",
-//         D: "Raising Helen",
+        A: "My Girl",
+        B: "Rent",
+        C: "The Perfect Storm",
+        D: "Raising Helen",
 
-//         correctChoice: "B"
-//     },
-//     {
-//         question: "What year was 'The Brother's Grimm' released?",
+        correctChoice: "B"
+    },
+    {
+        question: "What year was 'The Brother's Grimm' released?",
 
-//         A: "2005",
-//         B: "2001",
-//         C: "1999",
-//         D: "2007",
+        A: "2005",
+        B: "2001",
+        C: "1999",
+        D: "2007",
 
-//         correctChoice: "A"
-//     },
-//     {
-//         question: "Who was the director the movie 'It'?",
+        correctChoice: "A"
+    },
+    {
+        question: "Who was the director the movie 'It'?",
 
-//         A: "Steven Spielberg",
-//         B: "Christoper Nolan",
-//         C: "David Fincher",
-//         D: "Andrés Muschietti",
+        A: "Steven Spielberg",
+        B: "Christoper Nolan",
+        C: "David Fincher",
+        D: "Andrés Muschietti",
 
-//         correctChoice: "D"
-//     },
-//     {
-//         question: "What year was 'Schindler's List' released?",
+        correctChoice: "D"
+    },
+    {
+        question: "What year was 'Schindler's List' released?",
 
-//         A: "1994",
-//         B: "1992",
-//         C: "2005",
-//         D: "2000",
+        A: "1994",
+        B: "1992",
+        C: "2005",
+        D: "2000",
 
-//         correctChoice: "A"
+        correctChoice: "A"
 
-//     },
-//     {
+    },
+    {
 
-//         question: "Which Harry Potter movie is this?",
+        question: "Which Harry Potter movie is this?",
 
-//         A: "Chamber of Secrets",
-//         B: "Goblet of Fire",
-//         C: "Order of the Phoenix",
-//         D: "Half-Blood Prince",
+        A: "Chamber of Secrets",
+        B: "Goblet of Fire",
+        C: "Order of the Phoenix",
+        D: "Half-Blood Prince",
 
-//         correctChoice: "D"
+        correctChoice: "D"
 
-//     }
-// ];
+    }
+];
 
-// var quizLength = quizQuestions.length
+var quizLength = quizQuestions.length
 
-// function startGame() {
-//     console.log("startGame");
-//     showImage();
-//     addQuizQuestions();
-//     questionIndex++;
-//     endGame.style.display = "none";
-//     quizPage.style.display = "block";
+function startGame() {
+    console.log("startGame");
+    showImage();
+    addQuizQuestions();
+    questionIndex++;
+    endGame.style.display = "none";
+    quizPage.style.display = "block";
     
 
-// };
+};
 
-// // startQuizBtn.addEventListener("click", startGame);
+// startQuizBtn.addEventListener("click", startGame);
 
-// function addQuizQuestions() {
-//     console.log(quizQuestions[questionIndex].question);
-//     var currentQuestion = quizQuestions[questionIndex];
-//     questionList.textContent = currentQuestion.question;
-//     buttonA.textContent = currentQuestion.A;
-//     buttonB.textContent = currentQuestion.B;
-//     buttonC.textContent = currentQuestion.C;
-//     buttonD.textContent = currentQuestion.D;
-    
-// };
+function addQuizQuestions() {
+    // console.log(quizQuestions[questionIndex].question);
+    var currentQuestion = quizQuestions[questionIndex];
+    questionList.textContent = currentQuestion.question;
+    buttonA.textContent = "A. " + currentQuestion.A;
+    buttonB.textContent = "B. " + currentQuestion.B;
+    buttonC.textContent = "C. " + currentQuestion.C;
+    buttonD.textContent = "D. " + currentQuestion.D;
+};
 
-// function checkAnswer (answer) {
+function checkAnswer (answer) {
     
-//     console.log(questionIndex);
-    
-    
-//     if (questionIndex-1<4) {
+    // console.log(questionIndex);
+    if (questionIndex-1<4) {
         
-//         correct = quizQuestions[questionIndex-1].correctChoice;
-//         if (answer === correct) {
-//             text.textContent = 'Correct';
-//             score++;
-//         } 
-//         else {
-//             text.textContent = 'Incorrect';
-//         }
-//         rightwrong.setAttribute("style", "display:Block");
-//         rightwrong.appendChild(text);
-//         showImage();
-//         addQuizQuestions();
-//         questionIndex++;
-        
+        correct = quizQuestions[questionIndex-1].correctChoice;
+        if (answer === correct) {
+            text.textContent = 'Correct';
+            score++;
+        } 
+        else {
+            text.textContent = 'Incorrect';
+        }
+        rightwrong.setAttribute("style", "display:Block");
+        rightwrong.appendChild(text);
+        showImage();
+        addQuizQuestions();
+        questionIndex++;
+    }
 
-//     }
-
-//     else {
-//         displayScore();
-//     }   
-    
-
-// };
+    else {
+        displayScore();
+    }   
+};
 
 
-// function displayScore(){
-//     $('#quizPage').hide();
-//     $('#endGame').show();
-//     finalScore.textContent = score + " out of " + quizLength;   
-// };
+function displayScore(){
+    $('#quizPage').hide();
+    $('#endGame').show();
+    finalScore.textContent = score + " out of " + quizLength;   
+};
 
-// endQuizBtn.addEventListener("click", function(){
-//     endGame.setAttribute("style", "display: none");
-//     quizPage.setAttribute("style", "display: none");
-//     score=0;
-//     questionIndex=0;
-//     text.textContent = "";
-   
-// });
+endQuizBtn.addEventListener("click", function(){
+    endGame.setAttribute("style", "display: none");
+    quizPage.setAttribute("style", "display: none");
+    score=0;
+    questionIndex=0;
+    text.textContent = "";
+});
 
-// restartQuizBtn.addEventListener("click", function(){
-//     endGame.setAttribute("style", "display: none");
-//     quizPage.setAttribute("style", "display: none");
-//     score=0;
-//     questionIndex=0;
-//     text.textContent = "";
-//     startGame();
-   
-// });
+restartQuizBtn.addEventListener("click", function(){
+    endGame.setAttribute("style", "display: none");
+    quizPage.setAttribute("style", "display: none");
+    score=0;
+    questionIndex=0;
+    text.textContent = "";
+    startGame();
+});

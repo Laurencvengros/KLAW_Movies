@@ -316,3 +316,16 @@ footer p{
 
 }
 
+#A, #B, #C, #D{
+    min-width: 150px;
+    min-height: 30px;
+}
+
+#movieImageOne {
+    border: 1px;
+    border-radius: 2;
+    border-style: solid;
+    border-color: black;
+    max-width:50%;
+
+}
