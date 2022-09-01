@@ -50,6 +50,18 @@ footer p{
    
 }
 
+#poster6, #poster7, #poster8, #poster9, #poster10{
+    height: 300px;
+    margin: 2px;
+   
+}
+
+#poster11, #poster12, #poster13{
+    height: 300px;
+    margin: 2px;
+   
+}
+
 .display-poster:hover{
     transform: scale(1.1);
     
@@ -107,6 +119,7 @@ footer p{
     max-width: 600px;
     margin-left: auto !important;
     margin-right: auto !important;
+    align-items: center;
 
 } 
 
@@ -120,6 +133,98 @@ footer p{
     border-color: black; */
     min-height: 530px;
     height: 100%;
+
+}
+
+#favMiddle{
+    /* 
+    border-top: 1px;
+    border-bottom: 1px;
+    border-left:0;
+    border-right:0;
+    border-style: solid;
+    border-color: black; */
+    /* display: flex;
+    align-items: center; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 600px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+} 
+
+#favMiddleMovies{
+    /* border-top: 1px;
+    border-radius: 0;
+    border-bottom:0 !important;
+    border-left:0;
+    border-right:0;
+    border-style: solid;
+    border-color: black; */
+    min-height: 500px;
+    height: 100%;
+
+}
+
+#gamesMiddle{
+    /* 
+    border-top: 1px;
+    border-bottom: 1px;
+    border-left:0;
+    border-right:0;
+    border-style: solid;
+    border-color: black; */
+    /* display: flex;
+    align-items: center; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+} 
+
+#gamesMiddleMovies{
+    /* border-top: 1px;
+    border-radius: 0;
+    border-bottom:0 !important;
+    border-left:0;
+    border-right:0;
+    border-style: solid;
+    border-color: black; */
+    min-height: 500px;
+    height: 100%;
+
+}
+
+#guessingGame{
+    border: 1px;
+    border-radius: 2;
+    border-style: solid;
+    border-color: black;
+    max-height: 500px;
+    height: 90%;
+
+}
+
+#guessingImage{
+    border: 1px;
+    border-radius: 2;
+    border-style: solid;
+    border-color: black;
+    max-width:50%;
+}
+
+#matchingGame{
+    margin-right: auto;
+    margin-left:auto;
+    max-height: 500px;
+    height: 90%;
 
 }
 
