@@ -157,28 +157,13 @@ footer p{
 } 
 
 #favMiddleMovies{
-    /* border-top: 1px;
-    border-radius: 0;
-    border-bottom:0 !important;
-    border-left:0;
-    border-right:0;
-    border-style: solid;
-    border-color: black; */
+
     min-height: 500px;
     height: 100%;
 
 }
 
 #gamesMiddle{
-    /* 
-    border-top: 1px;
-    border-bottom: 1px;
-    border-left:0;
-    border-right:0;
-    border-style: solid;
-    border-color: black; */
-    /* display: flex;
-    align-items: center; */
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -190,13 +175,7 @@ footer p{
 } 
 
 #gamesMiddleMovies{
-    /* border-top: 1px;
-    border-radius: 0;
-    border-bottom:0 !important;
-    border-left:0;
-    border-right:0;
-    border-style: solid;
-    border-color: black; */
+
     min-height: 500px;
     height: 100%;
 
@@ -226,6 +205,10 @@ footer p{
     max-height: 500px;
     height: 90%;
 
+}
+
+#matchTitle{
+    letter-spacing: 2px;
 }
 
 #headingText {
@@ -328,4 +311,11 @@ footer p{
     border-color: black;
     max-width:50%;
 
+}
+
+#gameStatus{
+    max-width: 600px;
+    display: none;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }

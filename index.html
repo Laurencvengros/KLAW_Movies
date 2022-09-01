@@ -225,45 +225,6 @@
         </div>
       </section> 
         <section id="personalizeSec">
-            <!-- <div class="title notification $grey-light mt-3 ml-3 mr-3 mb-3" id="homeMiddle">
-                <div class="columns">
-                    
-                    <div class="column m-0 p-0">
-                        <div class="control is-grouped">
-                            <div class="tile is-justify-content-right m-0 p-0">
-                                <input type="text" class="input" id="searchmovies" placeholder="Movie Title">
-                                <a class="button is-info open-modal" id="searchBtn" data-open="modal1">Search</a>                         
-                            </div>
-                            
-                            <div class="tile is-justify-content-right m-0 p-0">
-                                <label class="radio is-small">
-                                    <input type="radio" name="answer" id="imdbSearch" checked>
-                                    IMDB
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="answer" id="omdbSearch">
-                                    OMDB
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="answer" id="tmdbSearch">
-                                    TMDB
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column m-0 p-0 is-narrow">
-                        <div class="control tile is-justify-content-left ml-2 mt-0 mr-0 mb-0  p-0">
-                            
-                            <div class="select is-small">
-                                <select id="selectVal">
-                                    <option>Recent Searches</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div> -->
             <div class="tile notification $grey-light p-2 mr-3 mb-3 ml-3 is-flex-wrap-nowrap" id="pMiddle">
                 <div class="columns is-vcentered m-0">
                     <div class="column is-two-thirds">
@@ -509,7 +470,7 @@
 
         <section id="triviaSec">
 
-          <div class="tile mt-3 mr-3 ml-3 mb-0 notification has-background-info is-flex is-justify-content-center" id="gamesMiddle">
+          <div class="tile mt-3 mr-3 ml-3 mb-0 notification has-background-info is-justify-content-center" id="gamesMiddle">
             <div class="dropdown" id="gamesDropDown">
               <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -535,6 +496,11 @@
             </div>
           </div>
 
+          <div class="container mt-3 mr-3 ml-3 mb-0 notification has-background-info" id="gameStatus">
+               <span class="tile is-justify-content-center is has-text-centered has-text-white has-text-weight-semibold mb-2" id="timer">Time: 0</span> 
+              <progress class="progress" value="10" max="100" id="progressBar"></progress>
+          </div>
+
          <div class="container-poster notification $grey-light p-1 m-3" id="gamesMiddleMovies">
           <div class="tile is-justify-content-center">
               <div class="columns is-vcentered">
@@ -553,10 +519,6 @@
                     <div class="title has-text-centered">
                       <p class="is-size-1">What movie is this scene from?</p>
                     </div>
-                    <div class="title has-text-centered">
-                      <p class="subtitle">(Use keyboard to spell out the title)</p>
-                    </div>
-                      
                     <div class="title level-item">
                         <img src="./assets/images/backdrops/inceptionBackdrop.jpg" id="guessingImage">
                     </div>        
@@ -604,8 +566,8 @@
         </div>
 
         <div class="container" style="display:none" id="quizPage">
-            <div class="box mt-6">
-              <div class="notification is-info">
+            <!-- <div class="box mt-6"> -->
+              <div class="notification is-info m-3">
                 <div class="title is-flex-direction-column is-justify-content-center" id="triviaColumns">
                         <h2 class="subtitle is-3 mt-4 has-text-centered" id="questionList"></h2>
 
@@ -624,8 +586,49 @@
                     </div>
                   </div>
                 </div>       
-          </div>
+          <!-- </div> -->
         </div>
+
+        <div class="modal" id="modal3">
+          <div class="modal-card">  
+            <header class="modal-card-head">
+                <button class="modal-close" aria-label="close modal" data-close></button>
+                <p class="modal-card-title is-size-2">Game Instructions</p>
+                <br>
+            </header>
+            <section class="modal-card-body">
+                  <div id="gameName"></div>
+                    <div id="gameInstructions"></div>
+            </section>
+            <footer class="modal-footer">
+                <button class="button" aria-label="close modal" id="startGames" data-close>Start Game</button>
+            </footer>
+          </div>
+      </div>
+
+      <div class="modal" id="modal4">
+        <div class="modal-card">  
+          <header class="modal-card-head">
+              <button class="modal-close" aria-label="close modal" data-close></button>
+              <p class="modal-card-title is-size-2" id="gameOver">Game Complete or Over</p>
+              <br>
+          </header>
+          <section class="modal-card-body">
+                <div id="gameName"></div>
+                  <div><p id="overallProgress">You got 3 out of the 4 answers correct!</p></div>
+          </section>
+          <footer class="modal-footer">
+            <div class="columns">
+              <!-- <div class="column"> -->
+                <!-- <button class="button" aria-label="close modal" id="tryAgain" data-close>Try Again</button> -->
+              <!-- </div> -->
+              <div class="column">
+                <button class="button" aria-label="close modal" id="returnGames" data-close>Return To Games Page</button>
+              </div>
+            </div>
+          </footer>
+        </div>
+    </div>
 
         <div class="container" style="display: none;" id="endGame">
           <div class="box mt-6">

@@ -459,6 +459,7 @@ $("#top20Btn").on("click", function(){
 
 });
 
+var clickedTriviaBtn = false;
 $("#triviaBtn").on("click", function(){
     $("#homeSec").hide();
     $("#aboutSec").hide();
@@ -466,6 +467,19 @@ $("#triviaBtn").on("click", function(){
     $("#top20Sec").hide();
     $("#triviaSec").show();
     $("#searchBar").hide();
+
+   
+    $("#guessingGame").hide();
+    $("#quizPage").hide();
+    $("#matchingGame").hide();
+    $("#progressBar").hide();
+    $("gameStatus").hide();
+
+    $("#gamesMiddleMovies").show();
+    $("#gamesMiddle").show();
+    clickedTriviaBtn = true;
+
+    restartGames();
 
 });
 
@@ -975,18 +989,6 @@ $("#poster9").on("click", function(){
 });
 
 
-// $("#favBack").on("click", function() {
-//     clearFavorite();
-//     $("#kelsieFavs").show();
-//     $("#laurenFavs").show();
-//     $("#drewFavs").show();
-//     $("#willFavs").show();
-//     $("#displayFav").hide();
-// });
-
-// var dropdown = [];
-// var ids = ["kelsieDropDown","laurenDropDown","drewDropDown","willDropDown"];
-
 var dropdown1 = document.getElementById('kelsieDropDown');
 var dropdown2 = document.getElementById('laurenDropDown');
 var dropdown3 = document.getElementById('drewDropDown');
@@ -1018,55 +1020,135 @@ dropdown5.addEventListener('click', function(event) {
     dropdown5.classList.toggle('is-active');
 });
 
-$("#selectMatching").on("click", function(){
-    // clearFavorite();
-    // $("#movieTitle").empty
-    // $("#releaseYear").empty
-    // $("#moviePoster").attr('src', loadingImage);
-    // $("#moviePlot").empty
+var gameType = "";
+var maxProgess = null;
+var currentProgress = 0;
 
-    // document.getElementById('modal1').classList.add(isVisible);
-    // searchMovie = "Black Panther";
-    // favoriteMoviesTMDB(searchMovie);
+function updateProgress(){
+    currentProgress++;
+    $("#progressBar").attr("value",currentProgress);
+}
+
+$("#selectMatching").on("click", function(){
     $("#gamesMiddleMovies").hide();
     $("#guessingGame").hide();
-    $("#triviaGame").hide();
+    $("#quizPage").hide();
     $("#matchingGame").show();
+    $("#gameStatus").show();
+    $("#gamesMiddle").hide();
+    $("#progressBar").show();
+    $("#navbarMenuHeroB").hide();
 
+    document.getElementById('gameName').innerHTML = `<p class="is-size-2 has-text-weight-semibold">Match Movie Poster With Release Year</p><br>`;
+    document.getElementById('gameInstructions').innerHTML ="<p>You have 90 seconds to match the movie images with the release year of the movie. The bar at the top indicates your progress in this game, and the timer lets you know how much time is left in it.</p>";
+    document.getElementById('modal3').classList.add(isVisible);
+    //Set Game Type
+    gameType = "match";
+    maxProgess = 5;
+    $("#progressBar").attr("max","5");
 });
 
 $("#selectGuessing").on("click", function(){
-    // clearFavorite();
-    // $("#movieTitle").empty
-    // $("#releaseYear").empty
-    // $("#moviePoster").attr('src', loadingImage);
-    // $("#moviePlot").empty
-
-    // document.getElementById('modal1').classList.add(isVisible);
-    // searchMovie = "Black Panther";
-    // favoriteMoviesTMDB(searchMovie);
     $("#gamesMiddleMovies").hide();
     $("#guessingGame").show();
-    $("#triviaGame").hide();
+    $("#quizPage").hide();
     $("#matchingGame").hide();
+    $("#gamesMiddle").hide();
+    $("#gameStatus").show();
+    $("#progressBar").show();
+    $("#navbarMenuHeroB").hide();
 
+    document.getElementById('gameName').innerHTML = `<p class="is-size-2 has-text-weight-semibold">Guess This Movie Title</p><br>`;
+    document.getElementById('gameInstructions').innerHTML ="<p>You have 90 seconds to guess correct movie title for the image using your the keys on your keyboard. The bar at the top indicates your progress in this game, and the timer lets you know how much time is left in it.</p>";
+    document.getElementById('modal3').classList.add(isVisible);
+    //Set Game 
+    $("#progressBar").attr("max","9");
+    maxProgess = 9;
+    gameType = "guess";
 });
 
 $("#selectTrivia").on("click", function(){
-    // clearFavorite();
-    // $("#movieTitle").empty
-    // $("#releaseYear").empty
-    // $("#moviePoster").attr('src', loadingImage);
-    // $("#moviePlot").empty
-
-    // document.getElementById('modal1').classList.add(isVisible);
-    // searchMovie = "Black Panther";
-    // favoriteMoviesTMDB(searchMovie);
     $("#gamesMiddleMovies").hide();
     $("#guessingGame").hide();
     $("#quizPage").show();
     $("#matchingGame").hide();
+    $("#gamesMiddle").hide();
+    $("#gameStatus").show();
+    $("#progressBar").show();
+    $("#navbarMenuHeroB").hide();
+
     startGame();
+    document.getElementById('gameName').innerHTML = `<p class="is-size-2 has-text-weight-semibold">Movie Trivia</p><br>`;
+    document.getElementById('gameInstructions').innerHTML ="<p>You have 90 seconds to guess correct movie titles for the images that wil be displayed. The bar at the top indicates your progress in this game, and the timer lets you know how much time is left in it.</p>";
+
+    document.getElementById('modal3').classList.add(isVisible);
+    //Set Game Type
+    console.log($("#progressBar"));
+    $("#progressBar").attr("max","5");
+    maxProgess = 5;
+    gameType = "trivia";
+});
+
+var timeLeft = 90;
+var gameComplete = false;
+
+$("#startGames").on("click", function (event) {
+    // event.preventDefault();
+    event.stopPropagation();
+    timeLeft = 90;
+    currentProgress = 0;
+    $("#progressBar").attr("value","0");
+
+    
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+      // As long as the `timeLeft` is greater than 1
+      if (timeLeft > 0) {
+        // Set the `textContent` of `timerEl` to show the remaining seconds
+        $("#timer").text("Time: " + timeLeft);
+        // Decrement `timeLeft` by 1
+        timeLeft--;
+      
+      } else {
+        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+        
+        $("#timer").text("Time: 90");
+
+        clearInterval(timeInterval);
+        if (gameComplete){
+            $("#gameOver").text("You completed this activity!");
+            if (gameType === "trivia"){
+                $("#overallProgress").text("You got " + score + " out of " + maxProgess + " answers correct.");
+            }
+
+            document.getElementById('modal4').classList.add(isVisible);            
+        }
+        else {
+           $("#gameOver").text("This activity timed out.");
+           if (gameType === "trivia"){
+                $("#overallProgress").text("You got " + score + " out of " + maxProgess + " answers correct.");
+            }
+
+            document.getElementById('modal4').classList.add(isVisible);
+        }
+  
+      }
+  
+    }, 1000);
+
+});
+
+
+$("#returnGames").on("click", function (event) {
+    restartGames();
+    $("#gamesMiddleMovies").show();
+    $("#guessingGame").hide();
+    $("#quizPage").hide();
+    $("#matchingGame").hide();
+    $("#gamesMiddle").show();
+    $("#gameStatus").hide();
+    $("#progressBar").hide();
+    $("#navbarMenuHeroB").show();
 
 });
 
@@ -1118,9 +1200,7 @@ var cards = [
     }
 ];
 
-// console.log(cards);
-
-cards = shuffleArray(cards);
+// console.log(cards);cards = shuffleArray(cards);
 var imgHtmlhidden = `<img style="max-width:75%;" src="./assets/images/matchPosters/hiddenCard.png">`
 var activated = [];
 
@@ -1129,9 +1209,9 @@ for (let i = 0; i < 10; i++){
     $("#matchBtn" + i).append(imgHtmlhidden);
 
 }
-
+    
 firstCardIndex = null;
-
+    
 for (let i = 0; i < 10; i++){
 
     $("#matchBtn" + i).on("click", async function(){  
@@ -1145,6 +1225,12 @@ for (let i = 0; i < 10; i++){
                 if (cards[i].id === cards[firstCardIndex].id){
                     activated[i] = true;
                     activated[firstCardIndex] = true;
+                    updateProgress();
+
+                    if (!activated.includes(false)) {
+                        gameComplete = true;
+                        timeLeft = 0;
+                    }
                 }
                 else {
                     await sleep(1000);
@@ -1164,6 +1250,11 @@ for (let i = 0; i < 10; i++){
     
     });
 }
+
+
+
+
+
 
 $("#resetMatchBtn").on("click", function(){
     cards = shuffleArray(cards);
@@ -1207,12 +1298,20 @@ $(document).keydown(function(event) {
             if (matchTitle[i] === String.fromCharCode(event.which)){
                 console.log(matchTitle[i] + " = " + String.fromCharCode(event.which))
                 printTitle = replaceChar(printTitle, i, String.fromCharCode(event.which))
+                updateProgress();
             //     console.log(printTitle[i] = );
             }
         
         }
         
         $("#matchTitle").text(printTitle);
+
+        if (!printTitle.includes("_")){
+
+            gameComplete = true;
+            timeLeft = 0;
+
+        }
 
     }
     else {
@@ -1246,7 +1345,7 @@ $("#poster10").on("click", function(){
     $("#moviePlot").empty
 
     document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="The English Patient";
+    searchMovie="New Your Minute";
     getTMDBmovies()
     // getMovie(searchMovie);
 });
@@ -1260,7 +1359,7 @@ $("#poster11").on("click", function(){
     $("#moviePlot").empty
 
     document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="The English Patient";
+    searchMovie="Your Name";
     getTMDBmovies()
     // getMovie(searchMovie);
 });
@@ -1274,7 +1373,7 @@ $("#poster12").on("click", function(){
     $("#moviePlot").empty
 
     document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="New York Minute";
+    searchMovie="The Green Mile";
     getTMDBmovies()
     // getMovie(searchMovie);
 });
@@ -1288,7 +1387,7 @@ $("#poster13").on("click", function(){
     $("#moviePlot").empty
 
     document.getElementById('modal1').classList.add(isVisible);
-    searchMovie="Your Name";
+    searchMovie="Forest Gump";
     getTMDBmovies()
     // getMovie(searchMovie);
 });
@@ -1415,6 +1514,7 @@ function startGame() {
     questionIndex++;
     endGame.style.display = "none";
     quizPage.style.display = "block";
+    updateProgress();
     
 
 };
@@ -1429,30 +1529,40 @@ function addQuizQuestions() {
     buttonB.textContent = "B. " + currentQuestion.B;
     buttonC.textContent = "C. " + currentQuestion.C;
     buttonD.textContent = "D. " + currentQuestion.D;
+    
 };
 
 function checkAnswer (answer) {
-    
-    // console.log(questionIndex);
-    if (questionIndex-1<4) {
+    updateProgress();
+    // console.log((questionIndex-1));
+
+    if (questionIndex-1<5) {
         
         correct = quizQuestions[questionIndex-1].correctChoice;
         if (answer === correct) {
             text.textContent = 'Correct';
             score++;
+            // console.log(score);
+            console.log("Correct");
         } 
         else {
+            console.log("Incorrect");
             text.textContent = 'Incorrect';
         }
         rightwrong.setAttribute("style", "display:Block");
         rightwrong.appendChild(text);
+        
+    }
+    if (questionIndex < 5) {
         showImage();
         addQuizQuestions();
         questionIndex++;
     }
-
     else {
-        displayScore();
+        // displayScore();
+        gameComplete = true;
+        timeLeft = 0;
+
     }   
 };
 
@@ -1479,3 +1589,43 @@ restartQuizBtn.addEventListener("click", function(){
     text.textContent = "";
     startGame();
 });
+
+function restartGames() {
+
+    //Reset Trivia
+    endGame.setAttribute("style", "display: none");
+    quizPage.setAttribute("style", "display: none");
+    score=0;
+    questionIndex=0;
+    text.textContent = "";
+
+    //Reset Guessing
+    printTitle = ""
+    for (let i = 0; i < matchTitle.length;i++){
+
+        printTitle = printTitle + "_";
+    }
+
+    console.log(printTitle);
+
+    $("#matchTitle").empty
+    $("#matchTitle").text(printTitle);
+
+    //Reset Match Game
+    cards = shuffleArray(cards);
+    activated = [];
+
+    for(i=0; i < cards.length;i++){
+        activated.push(false);
+        $("#matchBtn" + i).empty();
+        $("#matchBtn" + i).append(imgHtmlhidden);
+    }
+    $("#progressBar").attr("value","");
+    timeLeft = 0;
+    currentProgress = 0;
+
+    gameType=""
+    $("#overallProgress").empty();
+    $("#gameOver").empty();
+}
+
